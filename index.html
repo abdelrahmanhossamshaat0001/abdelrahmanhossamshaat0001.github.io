@@ -109,6 +109,8 @@
   .cert{display:flex;justify-content:space-between;gap:12px;padding:16px 18px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
   .cert:last-child{border-bottom:none;}
   .cert-name{font-size:15px;}
+  .cert-name a{color:var(--text);}
+  .cert-name a:hover{color:var(--accent);text-decoration:none;}
   .cert-org{font-family:var(--font-mono);font-size:12px;color:var(--text-dim);margin-top:4px;}
   .cert-date{font-family:var(--font-mono);font-size:12px;color:var(--accent);white-space:nowrap;}
 
@@ -127,7 +129,17 @@
   .contact-box{border:1px solid var(--accent);padding:44px;text-align:center;background:var(--accent-soft);}
   .contact-box h2{margin-bottom:12px;}
   .contact-box p{color:var(--text-dim);max-width:460px;margin:0 auto 26px;}
-  .contact-links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;font-family:var(--font-mono);font-size:14px;}
+  .contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;}
+  @media(max-width:700px){.contact-grid{grid-template-columns:repeat(2,1fr);}}
+  .contact-card{border:1px solid var(--border);background:var(--bg);padding:26px 14px;transition:border-color .2s,transform .2s;}
+  .contact-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .contact-card .icon{font-size:22px;color:var(--accent);margin-bottom:12px;}
+  .contact-card .label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:2px;color:var(--text-dim);text-transform:uppercase;margin-bottom:8px;}
+  .contact-card a{color:var(--text);font-size:13.5px;word-break:break-word;font-weight:600;}
+  .contact-card a:hover{color:var(--accent);}
+  .easter-egg{margin-top:30px;font-family:var(--font-mono);font-size:12.5px;color:var(--text-dim);text-align:center;}
+  .easter-egg .flagkey{color:var(--accent);}
+  .easter-egg .flagval{color:var(--text);}
 
   footer{text-align:center;padding:28px 0;font-family:var(--font-mono);font-size:11px;color:var(--text-dim);border-top:1px solid var(--border);}
 
@@ -241,12 +253,29 @@
       <div class="eyebrow" style="justify-content:center;display:flex;" data-i18n="contact.eyebrow">// OPEN CHANNEL</div>
       <h2 data-i18n="contact.title">Get in Touch</h2>
       <p data-i18n="contact.desc">Available for internships, collaborations, and cybersecurity opportunities.</p>
-      <div class="contact-links">
-        <a href="https://github.com/abdelrahmanhossamshaat0001" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com/in/abdelrahman-hossam-shaat" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:abdelrahmanhossamshaat@gmail.com">Email</a>
-        <a href="https://huggingface.co/abdelrahmanhossamshaat" target="_blank" rel="noopener">Hugging Face</a>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="icon">✉</div>
+          <div class="label" data-i18n="contact.emailLabel">EMAIL</div>
+          <a href="mailto:abdelrahmanhossamshaat@gmail.com">abdelrahmanhossamshaat@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">⌁</div>
+          <div class="label">GITHUB</div>
+          <a href="https://github.com/abdelrahmanhossamshaat0001" target="_blank" rel="noopener">abdelrahmanhossamshaat0001</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">in</div>
+          <div class="label">LINKEDIN</div>
+          <a href="https://linkedin.com/in/abdelrahman-hossam-shaat" target="_blank" rel="noopener">abdelrahman-hossam-shaat</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">🤗</div>
+          <div class="label" data-i18n="contact.hfLabel">HUGGING FACE</div>
+          <a href="https://huggingface.co/abdelrahmanhossamshaat" target="_blank" rel="noopener">abdelrahmanhossamshaat</a>
+        </div>
       </div>
+      <div class="easter-egg"><span class="flagkey">flag{</span><span class="flagval" data-i18n="contact.easterEgg">thanks_for_scrolling</span><span class="flagkey">}</span> — <span data-i18n="about.locLabel2">Damanhour, Egypt</span></div>
     </div>
   </section>
 </main>
@@ -278,7 +307,7 @@ const content = {
       p2:"I learn by building — over 25 public repositories document my hands-on work, from vulnerability assessments on deliberately vulnerable apps to ML models and Solidity smart contracts. I'm also drawn to entrepreneurship, currently developing Decko, a desktop cybersecurity assistant.",
       locLabel:"LOCATION", instLabel:"INSTITUTION", degLabel:"DEGREE",
       degValue:"B.Sc. Computer & Systems Engineering — Cybersecurity Track",
-      gradLabel:"EXPECTED GRADUATION", langLabel:"LANGUAGES", langValue:"Arabic (Native), English (Professional)"
+      gradLabel:"EXPECTED GRADUATION", langLabel:"LANGUAGES", langValue:"Arabic (Native), English (Professional)", locLabel2:"Damanhour, Egypt"
     },
     skills:{eyebrow:"// TOOLKIT", title:"Skills", groups:[
       {name:"Programming", items:["Python","JavaScript","SQL","HTML5 / CSS3","Java","Dart & Flutter"]},
@@ -315,11 +344,11 @@ const content = {
       ]
     },
     certs:{eyebrow:"// CREDENTIALS", title:"Certifications", items:[
-      {name:"AWS Academy Graduate — Cloud Foundations", org:"Amazon Web Services", date:"Apr 2026"},
-      {name:"ISC2 CC Course Pre-assessment", org:"ISC2", date:"Feb 2026"},
-      {name:"Leadership & Employability Skills", org:"Ministry of Electricity, Egypt", date:"Aug 2025"}
+      {name:"AWS Academy Graduate — Cloud Foundations", org:"Amazon Web Services", date:"Apr 2026", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"},
+      {name:"ISC2 CC Course Pre-assessment", org:"ISC2", date:"Feb 2026", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"},
+      {name:"Leadership & Employability Skills", org:"Ministry of Electricity, Egypt", date:"Aug 2025", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"}
     ]},
-    contact:{eyebrow:"// OPEN CHANNEL", title:"Get in Touch", desc:"Available for internships, collaborations, and cybersecurity opportunities."},
+    contact:{eyebrow:"// OPEN CHANNEL", title:"Get in Touch", desc:"Available for internships, collaborations, and cybersecurity opportunities.", emailLabel:"EMAIL", hfLabel:"HUGGING FACE", easterEgg:"thanks_for_scrolling"},
     footer:{text:"© 2026 ABDELRAHMAN HOSSAM SHAAT — STATUS: ACTIVE"},
     stats:[{n:"25+",l:"GitHub Repos"},{n:"5",l:"Featured Projects"},{n:"3",l:"Certifications"},{n:"17",l:"Course Modules"}]
   },
@@ -346,7 +375,7 @@ const content = {
       p2:"بتعلم عن طريق البناء الفعلي — عندي أكتر من 25 مستودع عام على GitHub بيوثقوا شغلي العملي، من تقييمات الثغرات على تطبيقات ضعيفة بقصد للتدريب، لنماذج ML وعقود Solidity ذكية. كمان مهتم بريادة الأعمال، وحاليًا بطور Decko، مساعد أمن سيبراني لسطح المكتب.",
       locLabel:"الموقع", instLabel:"الجامعة", degLabel:"الدرجة العلمية",
       degValue:"بكالوريوس هندسة حاسبات ونظم — مسار الأمن السيبراني",
-      gradLabel:"موعد التخرج المتوقع", langLabel:"اللغات", langValue:"العربية (لغة أم)، الإنجليزية (احترافي)"
+      gradLabel:"موعد التخرج المتوقع", langLabel:"اللغات", langValue:"العربية (لغة أم)، الإنجليزية (احترافي)", locLabel2:"دمنهور، مصر"
     },
     skills:{eyebrow:"// الأدوات", title:"المهارات", groups:[
       {name:"البرمجة", items:["Python","JavaScript","SQL","HTML5 / CSS3","Java","Dart & Flutter"]},
@@ -383,11 +412,11 @@ const content = {
       ]
     },
     certs:{eyebrow:"// الشهادات", title:"الشهادات", items:[
-      {name:"AWS Academy Graduate — Cloud Foundations", org:"Amazon Web Services", date:"أبريل 2026"},
-      {name:"ISC2 CC Course Pre-assessment", org:"ISC2", date:"فبراير 2026"},
-      {name:"مهارات القيادة والتأهيل للتوظيف", org:"وزارة الكهرباء، مصر", date:"أغسطس 2025"}
+      {name:"AWS Academy Graduate — Cloud Foundations", org:"Amazon Web Services", date:"أبريل 2026", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"},
+      {name:"ISC2 CC Course Pre-assessment", org:"ISC2", date:"فبراير 2026", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"},
+      {name:"مهارات القيادة والتأهيل للتوظيف", org:"وزارة الكهرباء، مصر", date:"أغسطس 2025", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"}
     ]},
-    contact:{eyebrow:"// تواصل", title:"تواصل معايا", desc:"متاح لفرص التدريب والتعاون في مجال الأمن السيبراني."},
+    contact:{eyebrow:"// تواصل", title:"تواصل معايا", desc:"متاح لفرص التدريب والتعاون في مجال الأمن السيبراني.", emailLabel:"الإيميل", hfLabel:"هجينج فيس", easterEgg:"شكرا_انك_وصلت_هنا"},
     footer:{text:"© 2026 عبدالرحمن حسام شعت — الحالة: نشط"},
     stats:[{n:"+25",l:"مستودع GitHub"},{n:"5",l:"مشاريع مختارة"},{n:"3",l:"شهادات"},{n:"17",l:"مادة دراسية"}]
   }
@@ -442,7 +471,7 @@ function renderStats(lang){
 function renderCerts(lang){
   document.getElementById('certList').innerHTML = content[lang].certs.items.map(x=>`
     <div class="cert">
-      <div><div class="cert-name">${x.name}</div><div class="cert-org">${x.org}</div></div>
+      <div><div class="cert-name"><a href="${x.link}" target="_blank" rel="noopener">${x.name} ↗</a></div><div class="cert-org">${x.org}</div></div>
       <div class="cert-date">${x.date}</div>
     </div>
   `).join('');
@@ -509,4 +538,3 @@ renderAll('en');
 
 </body>
 </html>
- 
