@@ -3,723 +3,509 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdelrahman Hossam Shaat — Cybersecurity Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>AbdElrahman Hossam Shaat | Cybersecurity Portfolio</title>
+<meta name="description" content="AbdElrahman Hossam Shaat — Cybersecurity Track, Computer & Systems Engineering, Alexandria National University.">
 <style>
-:root{
-  --void:#08090b; --panel:#0f1113; --panel-2:#131619; --line:#1c2024;
-  --text:#d7dadd; --dim:#80868c; --dim-2:#4d5257;
-  --green:#39d98a; --green-dim:#1f7a52;
-  --red:#ff5c5c; --amber:#ffb454;
-  --mono:'JetBrains Mono',monospace; --sans:'Inter',sans-serif; --arfont:'Cairo',sans-serif;
-  --radius:2px;
-  --shadow: 0 0 0 1px rgba(57,217,138,0.08), 0 20px 60px -20px rgba(0,0,0,0.8);
-}
-html[data-theme="light"]{
-  --void:#f3f4f5; --panel:#ffffff; --panel-2:#fbfbfc; --line:#dde1e4;
-  --text:#14171a; --dim:#585e64; --dim-2:#8a9096;
-  --green:#0e8f57; --green-dim:#0e8f57;
-  --red:#c62d2d; --amber:#a5680b;
-  --shadow: 0 0 0 1px rgba(14,143,87,0.08), 0 20px 60px -20px rgba(0,0,0,0.15);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  background:var(--void); color:var(--text); font-family:var(--sans);
-  line-height:1.6; transition:background .3s ease,color .3s ease;
-  overflow-x:hidden;
-}
-html[dir="rtl"] body{font-family:var(--arfont);}
-::selection{background:var(--green); color:var(--void);}
+  :root{
+    --bg:#0A0A0A; --bg-alt:#141414; --surface:#191919;
+    --text:#EDEDEA; --text-dim:#9B9B96;
+    --accent:#B8332E; --accent-soft:rgba(184,51,46,0.14); --accent-strong:#D6453F;
+    --border:rgba(255,255,255,0.10);
+    --font-display: Georgia, 'Times New Roman', Tahoma, serif;
+    --font-mono: 'SF Mono', Consolas, Menlo, 'Courier New', Tahoma, monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Arial, sans-serif;
+  }
+  html[data-theme="light"]{
+    --bg:#F3F2EF; --bg-alt:#FFFFFF; --surface:#FFFFFF;
+    --text:#151513; --text-dim:#5C5C57;
+    --accent:#9A241F; --accent-soft:rgba(154,36,31,0.08); --accent-strong:#7E1D19;
+    --border:rgba(0,0,0,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.7;transition:background .25s,color .25s;}
+  ::selection{background:var(--accent);color:#fff;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px;}
+  img{max-width:100%;}
 
-.scan-bg{
-  position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.035;
-  background-image: repeating-linear-gradient(0deg, var(--green) 0px, var(--green) 1px, transparent 1px, transparent 3px);
-}
-@media (prefers-reduced-motion: reduce){ *{animation-duration:.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important;} }
+  header{position:sticky;top:0;z-index:60;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;gap:16px;}
+  .brand{font-family:var(--font-mono);font-size:15px;letter-spacing:.5px;white-space:nowrap;}
+  .brand b{color:var(--accent);font-weight:700;}
+  .navlinks{display:flex;gap:24px;list-style:none;font-family:var(--font-mono);font-size:13px;}
+  .navlinks a{color:var(--text);opacity:.75;}
+  .navlinks a:hover{opacity:1;color:var(--accent);text-decoration:none;}
+  .navctrls{display:flex;align-items:center;gap:8px;}
+  .ctrl-btn{font-family:var(--font-mono);font-size:12px;letter-spacing:1px;background:transparent;border:1px solid var(--border);color:var(--text);padding:7px 12px;cursor:pointer;border-radius:2px;transition:border-color .2s,color .2s;}
+  .ctrl-btn:hover{border-color:var(--accent);color:var(--accent);}
+  .navtoggle{display:none;}
+  @media(max-width:760px){
+    .navlinks{position:absolute;top:100%;inset-inline:0;background:var(--bg-alt);flex-direction:column;padding:18px 24px;display:none;border-bottom:1px solid var(--border);gap:14px;}
+    .navlinks.open{display:flex;}
+    .navtoggle{display:inline-block;}
+  }
 
-.container{max-width:1040px; margin:0 auto; padding:0 24px; position:relative; z-index:1;}
+  .hero{padding:64px 0 60px;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;}
+  @media(max-width:820px){.hero-grid{grid-template-columns:1fr;}}
+  .kicker{font-family:var(--font-mono);font-size:12px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+  .kicker::before{content:'';width:8px;height:8px;background:var(--accent);border-radius:50%;display:inline-block;box-shadow:0 0 8px var(--accent);}
+  .hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(32px,5.4vw,52px);line-height:1.15;}
+  .hero h1 em{font-style:normal;color:var(--accent);}
+  .hero .role{font-family:var(--font-mono);font-size:14px;color:var(--text-dim);margin-top:14px;letter-spacing:.5px;}
+  .hero p.desc{margin-top:20px;color:var(--text-dim);max-width:520px;font-size:15.5px;}
+  .hero-cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
+  .btn{font-family:var(--font-mono);font-size:13px;letter-spacing:.5px;padding:12px 20px;border:1px solid var(--accent);color:var(--accent);display:inline-block;transition:.2s;}
+  .btn:hover{background:var(--accent);color:#fff;text-decoration:none;}
+  .btn.filled{background:var(--accent);color:#fff;}
+  .btn.filled:hover{background:transparent;color:var(--accent);}
 
-/* ---------- Terminal chrome bar (signature motif, used as sticky nav) ---------- */
-.termbar{
-  position:sticky; top:0; z-index:50; background:var(--panel); border-bottom:1px solid var(--line);
-  backdrop-filter:blur(10px); background:color-mix(in srgb, var(--panel) 88%, transparent);
-}
-.termbar-inner{
-  max-width:1040px; margin:0 auto; padding:10px 24px; display:flex; align-items:center; gap:14px;
-}
-.dots{display:flex; gap:6px; flex-shrink:0;}
-.dot{width:10px; height:10px; border-radius:50%;}
-.dot.r{background:var(--red);} .dot.y{background:var(--amber);} .dot.g{background:var(--green);}
-.termpath{
-  font-family:var(--mono); font-size:12.5px; color:var(--dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-  flex:1;
-}
-.termpath b{color:var(--green); font-weight:500;}
-.term-nav{display:flex; gap:18px; align-items:center; flex-shrink:0;}
-.term-nav a{
-  font-family:var(--mono); font-size:12px; color:var(--dim); text-decoration:none; letter-spacing:.02em;
-  transition:color .2s;
-}
-.term-nav a:hover{color:var(--green);}
-.toggles{display:flex; gap:8px; align-items:center; flex-shrink:0;}
-.tbtn{
-  font-family:var(--mono); font-size:11px; font-weight:600; color:var(--text); background:var(--panel-2);
-  border:1px solid var(--line); border-radius:var(--radius); padding:6px 10px; cursor:pointer;
-  letter-spacing:.03em; transition:all .2s; white-space:nowrap;
-}
-.tbtn:hover{border-color:var(--green); color:var(--green);}
-@media (max-width:720px){ .term-nav{display:none;} }
+  .terminal{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 20px 60px -20px rgba(0,0,0,.5);}
+  .term-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--bg-alt);border-bottom:1px solid var(--border);}
+  .term-dot{width:10px;height:10px;border-radius:50%;}
+  .term-dot.r{background:#E5544F;} .term-dot.y{background:#E5B84F;} .term-dot.g{background:#4FE58C;}
+  .term-title{font-family:var(--font-mono);font-size:11px;color:var(--text-dim);margin-inline-start:8px;}
+  .term-body{padding:20px 18px;font-family:var(--font-mono);font-size:13.5px;min-height:190px;}
+  .term-line{white-space:pre-wrap;color:var(--text);opacity:0;animation:fadeIn .3s forwards;}
+  .term-line.prompt{color:var(--accent-strong);}
+  .term-line.out{color:var(--text-dim);}
+  .cursor{display:inline-block;width:8px;height:15px;background:var(--accent);vertical-align:middle;animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  @keyframes fadeIn{to{opacity:1;}}
 
-/* ---------- Hero ---------- */
-.hero{padding:96px 0 64px; position:relative;}
-.eyebrow{
-  font-family:var(--mono); font-size:12.5px; color:var(--green); letter-spacing:.12em; text-transform:uppercase;
-  display:flex; align-items:center; gap:10px; margin-bottom:22px;
-}
-.eyebrow::before{content:"";width:8px;height:8px;background:var(--green);display:inline-block;
-  animation:blink 1.4s infinite step-end;}
-@keyframes blink{50%{opacity:0;}}
-h1.name{
-  font-family:var(--mono); font-weight:800; font-size:clamp(34px,5.6vw,62px); line-height:1.05; letter-spacing:-0.01em;
-  margin-bottom:16px;
-}
-html[dir="rtl"] h1.name{font-family:var(--arfont);}
-.name .accent{color:var(--green);}
-.role-line{font-size:clamp(16px,2.4vw,20px); color:var(--dim); max-width:640px; margin-bottom:34px;}
-.role-line strong{color:var(--text); font-weight:600;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);}
+  .stat{padding:22px 14px;text-align:center;border-inline-end:1px solid var(--border);}
+  .stat:last-child{border-inline-end:none;}
+  .stat b{display:block;font-family:var(--font-display);font-size:clamp(24px,3.5vw,34px);color:var(--accent);font-weight:400;}
+  .stat span{display:block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:1px;color:var(--text-dim);text-transform:uppercase;margin-top:6px;}
+  @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr);}.stat{border-bottom:1px solid var(--border);}}
 
-.hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:start;}
-@media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+  section{padding:60px 0;}
+  .eyebrow{font-family:var(--font-mono);font-size:11.5px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;}
+  h2{font-family:var(--font-display);font-weight:400;font-size:clamp(26px,3.6vw,36px);margin-bottom:28px;}
+  .divider{height:1px;background:var(--border);margin:0;}
 
-.cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:8px;}
-.btn{
-  font-family:var(--mono); font-size:13px; font-weight:600; padding:12px 20px; border-radius:var(--radius);
-  text-decoration:none; letter-spacing:.02em; display:inline-flex; align-items:center; gap:8px; transition:all .2s;
-  border:1px solid transparent; cursor:pointer;
-}
-.btn-primary{background:var(--green); color:var(--void); border-color:var(--green);}
-.btn-primary:hover{background:transparent; color:var(--green); border-color:var(--green);}
-.btn-ghost{background:transparent; color:var(--text); border-color:var(--line);}
-.btn-ghost:hover{border-color:var(--dim); color:var(--green);}
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:44px;align-items:start;}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .about-text p{color:var(--text-dim);margin-bottom:14px;font-size:15.5px;}
+  .infocard{border:1px solid var(--border);padding:20px;font-family:var(--font-mono);font-size:12.5px;background:var(--surface);}
+  .infocard dt{color:var(--accent);margin-top:12px;letter-spacing:.5px;}
+  .infocard dt:first-child{margin-top:0;}
+  .infocard dd{color:var(--text);opacity:.9;margin-top:2px;}
 
-/* terminal window widget */
-.termwin{
-  background:var(--panel); border:1px solid var(--line); border-radius:6px; box-shadow:var(--shadow); overflow:hidden;
-}
-.termwin-head{
-  background:var(--panel-2); border-bottom:1px solid var(--line); padding:9px 14px; display:flex; align-items:center; gap:8px;
-}
-.termwin-title{font-family:var(--mono); font-size:11.5px; color:var(--dim); margin-inline-start:8px;}
-.termwin-body{padding:20px 18px; font-family:var(--mono); font-size:13px; min-height:210px;}
-.tw-line{margin-bottom:10px; white-space:pre-wrap;}
-.tw-prompt{color:var(--green);}
-.tw-out{color:var(--dim);}
-.tw-cursor{display:inline-block; width:8px; height:14px; background:var(--green); vertical-align:middle; animation:blink 1s infinite step-end;}
+  .skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:24px;}
+  .skill-group h3{font-family:var(--font-mono);font-size:12px;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;border-bottom:1px solid var(--border);padding-bottom:8px;}
+  .skill-group ul{list-style:none;}
+  .skill-group li{padding:6px 0;font-size:14px;color:var(--text-dim);border-bottom:1px dashed var(--border);}
+  .skill-group li:last-child{border-bottom:none;}
 
-/* ---------- Sections ---------- */
-section{padding:64px 0; border-top:1px solid var(--line);}
-.sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:34px;}
-.sec-tag{font-family:var(--mono); font-size:12px; color:var(--dim-2);}
-.sec-title{font-family:var(--mono); font-weight:700; font-size:26px; letter-spacing:-.01em;}
-html[dir="rtl"] .sec-title{font-family:var(--arfont);}
+  .tagcloud{display:flex;flex-wrap:wrap;gap:10px;}
+  .tagcloud span{font-family:var(--font-mono);font-size:12.5px;border:1px solid var(--border);padding:7px 13px;color:var(--text-dim);border-radius:2px;}
 
-/* about */
-.about-text{max-width:720px; color:var(--dim); font-size:15.5px;}
-.about-text p{margin-bottom:14px;}
-.about-text .hl{color:var(--text); font-weight:600;}
+  .certs{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);}
+  .cert{display:flex;justify-content:space-between;gap:12px;padding:16px 18px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+  .cert:last-child{border-bottom:none;}
+  .cert-name{font-size:15px;}
+  .cert-org{font-family:var(--font-mono);font-size:12px;color:var(--text-dim);margin-top:4px;}
+  .cert-date{font-family:var(--font-mono);font-size:12px;color:var(--accent);white-space:nowrap;}
 
-/* cards generic */
-.card{
-  background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:22px 24px; transition:border-color .2s, transform .2s;
-}
-.card:hover{border-color:var(--green-dim);}
+  .cases{display:flex;flex-direction:column;gap:20px;}
+  .case{border:1px solid var(--border);background:var(--surface);}
+  .case-tab{font-family:var(--font-mono);font-size:11px;letter-spacing:1.5px;color:#fff;background:var(--accent);display:inline-block;padding:5px 14px;}
+  .case-body{padding:24px;}
+  .case h3{font-family:var(--font-display);font-size:21px;font-weight:400;margin-bottom:6px;}
+  .case .status{font-family:var(--font-mono);font-size:11px;color:var(--text-dim);letter-spacing:1px;margin-bottom:12px;display:block;text-transform:uppercase;}
+  .case p{color:var(--text-dim);font-size:14.5px;margin-bottom:14px;}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+  .tag{font-family:var(--font-mono);font-size:11px;border:1px solid var(--border);color:var(--accent);padding:4px 10px;}
+  .case-links{font-family:var(--font-mono);font-size:13px;}
+  .more-projects{text-align:center;margin-top:26px;font-family:var(--font-mono);font-size:13px;color:var(--text-dim);}
 
-/* education */
-.edu-card{display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap;}
-.edu-school{font-weight:700; font-size:17px; margin-bottom:4px;}
-.edu-degree{color:var(--green); font-size:14px; font-family:var(--mono); margin-bottom:14px;}
-.edu-meta{font-family:var(--mono); font-size:12px; color:var(--dim); white-space:nowrap;}
-.tag-list{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
-.tag{
-  font-family:var(--mono); font-size:11.5px; color:var(--dim); border:1px solid var(--line); border-radius:var(--radius);
-  padding:5px 10px; background:var(--panel-2);
-}
+  .contact-box{border:1px solid var(--accent);padding:44px;text-align:center;background:var(--accent-soft);}
+  .contact-box h2{margin-bottom:12px;}
+  .contact-box p{color:var(--text-dim);max-width:460px;margin:0 auto 26px;}
+  .contact-links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;font-family:var(--font-mono);font-size:14px;}
 
-/* certifications */
-.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
-@media (max-width:800px){ .grid-3{grid-template-columns:1fr;} }
-.cert-card .cert-name{font-weight:700; font-size:14.5px; margin-bottom:6px;}
-.cert-card .cert-org{color:var(--green); font-family:var(--mono); font-size:12px; margin-bottom:4px;}
-.cert-card .cert-date{color:var(--dim-2); font-family:var(--mono); font-size:11.5px;}
+  footer{text-align:center;padding:28px 0;font-family:var(--font-mono);font-size:11px;color:var(--text-dim);border-top:1px solid var(--border);}
 
-/* skills */
-.skill-groups{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
-@media (max-width:720px){ .skill-groups{grid-template-columns:1fr;} }
-.skill-group-title{
-  font-family:var(--mono); font-size:12px; color:var(--amber); letter-spacing:.06em; text-transform:uppercase; margin-bottom:12px;
-}
-.skill-chips{display:flex; flex-wrap:wrap; gap:8px;}
-.chip{
-  font-family:var(--mono); font-size:12px; padding:6px 12px; border-radius:20px; border:1px solid var(--line);
-  color:var(--text); background:var(--panel-2); transition:all .2s;
-}
-.chip:hover{border-color:var(--green); color:var(--green);}
-
-/* projects */
-.proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
-@media (max-width:800px){ .proj-grid{grid-template-columns:1fr;} }
-.proj-card{position:relative;}
-.proj-num{font-family:var(--mono); font-size:11px; color:var(--dim-2); margin-bottom:10px;}
-.proj-title{font-weight:700; font-size:16.5px; margin-bottom:10px;}
-.proj-desc{color:var(--dim); font-size:13.8px; margin-bottom:14px;}
-.proj-list{list-style:none; margin-bottom:14px;}
-.proj-list li{
-  font-size:13.2px; color:var(--dim); padding-inline-start:16px; position:relative; margin-bottom:6px;
-}
-.proj-list li::before{content:"›"; position:absolute; inset-inline-start:0; color:var(--green);}
-.proj-tags{display:flex; flex-wrap:wrap; gap:6px;}
-
-/* soft skills + languages */
-.two-col{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
-@media (max-width:720px){ .two-col{grid-template-columns:1fr;} }
-.list-check{list-style:none;}
-.list-check li{
-  display:flex; gap:10px; align-items:flex-start; margin-bottom:12px; font-size:14.5px; color:var(--text);
-}
-.list-check li::before{content:"✓"; color:var(--green); font-family:var(--mono); font-weight:700;}
-.lang-row{display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;}
-.lang-name{font-weight:600;}
-.lang-level{font-family:var(--mono); font-size:12px; color:var(--green);}
-.bar{height:4px; background:var(--line); border-radius:2px; overflow:hidden; margin-top:6px;}
-.bar-fill{height:100%; background:var(--green);}
-
-/* footer / contact */
-footer{padding:60px 0 40px;}
-.contact-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:40px;}
-@media (max-width:800px){ .contact-grid{grid-template-columns:repeat(2,1fr);} }
-.contact-card{
-  text-align:center; padding:20px 12px; border:1px solid var(--line); border-radius:6px; background:var(--panel);
-  text-decoration:none; color:var(--text); transition:all .2s;
-}
-.contact-card:hover{border-color:var(--green); transform:translateY(-2px);}
-.contact-card .ic{font-size:20px; margin-bottom:8px;}
-.contact-card .lbl{font-family:var(--mono); font-size:11px; color:var(--dim); margin-bottom:2px;}
-.contact-card .val{font-size:12.5px; font-weight:600; word-break:break-word;}
-.foot-note{text-align:center; font-family:var(--mono); font-size:11.5px; color:var(--dim-2);}
-.foot-note .flag{color:var(--amber);}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{animation:none !important;transition:none !important;}.term-line{opacity:1;}}
 </style>
 </head>
 <body>
-<div class="scan-bg"></div>
 
-<div class="termbar">
-  <div class="termbar-inner">
-    <div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
-    <div class="termpath"><b>abdelrahman@anu</b>:~/portfolio$ <span data-i18n="term_running">./run.sh --view=cv</span></div>
-    <nav class="term-nav">
-      <a href="#about" data-i18n="nav_about">about</a>
-      <a href="#education" data-i18n="nav_edu">education</a>
-      <a href="#certs" data-i18n="nav_certs">certs</a>
-      <a href="#skills" data-i18n="nav_skills">skills</a>
-      <a href="#projects" data-i18n="nav_projects">projects</a>
-      <a href="#contact" data-i18n="nav_contact">contact</a>
-    </nav>
-    <div class="toggles">
-      <button class="tbtn" id="langToggle">EN / AR</button>
-      <button class="tbtn" id="themeToggle" data-i18n="theme_btn">DARK</button>
+<header>
+  <nav class="wrap">
+    <div class="brand"><b>AH</b><span data-i18n="brandRest">.SHAAT</span></div>
+    <button class="ctrl-btn navtoggle" id="navToggle" aria-label="Menu" aria-expanded="false">MENU</button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="#certs" data-i18n="nav.certs">Certifications</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="navctrls">
+      <button class="ctrl-btn" id="themeToggle" aria-label="Toggle theme">☾</button>
+      <button class="ctrl-btn" id="langToggle" aria-label="Toggle language">AR</button>
     </div>
-  </div>
-</div>
-
-<header class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="eyebrow" data-i18n="eyebrow">status: online — open to opportunities</div>
-        <h1 class="name" data-i18n="hero_name">Abdelrahman <span class="accent">Hossam Shaat</span></h1>
-        <p class="role-line" data-i18n="hero_role">Cybersecurity Engineering student with hands-on experience in <strong>penetration testing</strong>, <strong>cryptography</strong> and <strong>machine learning</strong>. Building at the intersection of offensive security and applied AI.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://github.com/abdelrahmanhossamshaat0001" target="_blank" rel="noopener">
-            <span>&#x1F5C2;</span> <span data-i18n="btn_github">View GitHub</span>
-          </a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/abdelrahman-hossam-shaat/" target="_blank" rel="noopener">
-            <span>&#x1F517;</span> <span data-i18n="btn_linkedin">LinkedIn</span>
-          </a>
-          <a class="btn btn-ghost" href="mailto:abdelrahmanhossamshaat@gmail.com">
-            <span>&#x2709;</span> <span data-i18n="btn_email">Email me</span>
-          </a>
-        </div>
-      </div>
-      <div class="termwin">
-        <div class="termwin-head">
-          <div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
-          <div class="termwin-title">whoami.sh</div>
-        </div>
-        <div class="termwin-body" id="typedTerm"></div>
-      </div>
-    </div>
-  </div>
+  </nav>
 </header>
 
-<section id="about">
-  <div class="container">
-    <div class="sec-head"><span class="sec-tag">01</span><h2 class="sec-title" data-i18n="about_title">cat about.md</h2></div>
-    <div class="about-text">
-      <p data-i18n="about_p1"><span class="hl">Egypt-based</span> Computer &amp; Systems Engineering student at Alexandria National University (ANU), Cybersecurity track, expected to graduate in 2027.</p>
-      <p data-i18n="about_p2">Active <span class="hl">CTF player</span> — comfortable with web exploitation, reverse engineering, and cryptographic challenges. Also builds practical machine-learning systems, most recently a malware-detection model trained on memory-forensics data, deployed as a live Streamlit app.</p>
-      <p data-i18n="about_p3">Comfortable moving between the Linux terminal, Burp Suite, a Solidity IDE, and a Jupyter notebook — depending on what the problem needs.</p>
-    </div>
-  </div>
-</section>
-
-<section id="education">
-  <div class="container">
-    <div class="sec-head"><span class="sec-tag">02</span><h2 class="sec-title" data-i18n="edu_title">education</h2></div>
-    <div class="card edu-card">
+<main>
+  <div class="wrap hero">
+    <div class="hero-grid">
       <div>
-        <div class="edu-school">Alexandria National University (ANU)</div>
-        <div class="edu-degree" data-i18n="edu_degree">B.Sc. Computer and Systems Engineering — Cybersecurity Track</div>
-        <div class="tag-list">
-          <span class="tag" data-i18n="c1">Information Security Management</span>
-          <span class="tag" data-i18n="c2">Data Integrity &amp; Authentication</span>
-          <span class="tag" data-i18n="c3">OS Security Architecture</span>
-          <span class="tag" data-i18n="c4">Blockchains &amp; Solidity</span>
-          <span class="tag" data-i18n="c5">Software Engineering</span>
-          <span class="tag" data-i18n="c6">Network Security</span>
-          <span class="tag" data-i18n="c7">Cryptography</span>
-          <span class="tag" data-i18n="c8">Web Penetration Testing</span>
-          <span class="tag" data-i18n="c9">Machine Learning</span>
-          <span class="tag" data-i18n="c10">Data Mining</span>
+        <div class="kicker" data-i18n="hero.kicker">SYSTEM STATUS: ONLINE</div>
+        <h1 data-i18n="hero.name">AbdElrahman <em>Hossam Shaat</em></h1>
+        <p class="role" data-i18n="hero.role">CYBERSECURITY TRACK · COMPUTER &amp; SYSTEMS ENGINEERING · ANU</p>
+        <p class="desc" data-i18n="hero.desc">Cybersecurity student who learns by building — from penetration testing labs to machine learning models and secure smart contracts.</p>
+        <div class="hero-cta">
+          <a class="btn filled" href="#projects" data-i18n="hero.ctaProjects">View Projects</a>
+          <a class="btn" href="https://github.com/abdelrahmanhossamshaat0001" target="_blank" rel="noopener" data-i18n="hero.ctaGithub">GitHub Profile</a>
         </div>
       </div>
-      <div class="edu-meta" data-i18n="edu_grad">Expected 2027</div>
-    </div>
-  </div>
-</section>
-
-<section id="certs">
-  <div class="container">
-    <div class="sec-head"><span class="sec-tag">03</span><h2 class="sec-title" data-i18n="certs_title">certifications</h2></div>
-    <div class="grid-3">
-      <div class="card cert-card">
-        <div class="cert-name" data-i18n="cert1_name">AWS Academy Graduate — Cloud Foundations</div>
-        <div class="cert-org">Amazon Web Services</div>
-        <div class="cert-date" data-i18n="cert1_date">April 2026</div>
-      </div>
-      <div class="card cert-card">
-        <div class="cert-name" data-i18n="cert2_name">ISC2 CC Course Pre-assessment</div>
-        <div class="cert-org">ISC2</div>
-        <div class="cert-date" data-i18n="cert2_date">February 2026</div>
-      </div>
-      <div class="card cert-card">
-        <div class="cert-name" data-i18n="cert3_name">Leadership &amp; Employability Skills</div>
-        <div class="cert-org" data-i18n="cert3_org">Ministry of Electricity, Egypt</div>
-        <div class="cert-date" data-i18n="cert3_date">August 2025</div>
+      <div class="terminal">
+        <div class="term-bar">
+          <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+          <span class="term-title">abdelrahman@ANU: ~</span>
+        </div>
+        <div class="term-body" id="termBody"></div>
       </div>
     </div>
   </div>
-</section>
 
-<section id="skills">
-  <div class="container">
-    <div class="sec-head"><span class="sec-tag">04</span><h2 class="sec-title" data-i18n="skills_title">tech stack</h2></div>
-    <div class="skill-groups">
-      <div>
-        <div class="skill-group-title" data-i18n="sg1">Programming Languages</div>
-        <div class="skill-chips">
-          <span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">SQL</span>
-          <span class="chip">HTML5 / CSS3</span><span class="chip">Java</span><span class="chip">Dart &amp; Flutter</span>
-        </div>
+  <div class="wrap">
+    <div class="stats" id="statsStrip"></div>
+  </div>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section id="about" class="wrap">
+    <div class="eyebrow" data-i18n="about.eyebrow">// PROFILE</div>
+    <h2 data-i18n="about.title">About</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p data-i18n="about.p1">I'm a Computer & Systems Engineering student on the Cybersecurity track at Alexandria National University, expected to graduate in 2027. My coursework spans penetration testing, cryptography, secure software development, cloud computing, and machine learning.</p>
+        <p data-i18n="about.p2">I learn by building — over 25 public repositories document my hands-on work, from vulnerability assessments on deliberately vulnerable apps to ML models and Solidity smart contracts. I'm also drawn to entrepreneurship, currently developing Decko, a desktop cybersecurity assistant.</p>
       </div>
-      <div>
-        <div class="skill-group-title" data-i18n="sg2">Cybersecurity Tools</div>
-        <div class="skill-chips">
-          <span class="chip">OWASP Top 10</span><span class="chip">DVWA</span><span class="chip">OWASP Juice Shop</span>
-          <span class="chip">Burp Suite</span><span class="chip">Wireshark</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-group-title" data-i18n="sg3">Cloud</div>
-        <div class="skill-chips">
-          <span class="chip">AWS IAM</span><span class="chip">EC2</span><span class="chip">S3</span>
-          <span class="chip">VPC</span><span class="chip">RDS</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-group-title" data-i18n="sg4">Blockchain</div>
-        <div class="skill-chips">
-          <span class="chip">Solidity</span><span class="chip" data-i18n="sg4_chip2">Smart Contracts</span><span class="chip" data-i18n="sg4_chip3">Blockchain Architecture</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-group-title" data-i18n="sg5">Data &amp; AI</div>
-        <div class="skill-chips">
-          <span class="chip">Scikit-learn</span><span class="chip">Pandas</span><span class="chip">K-Means Clustering</span><span class="chip">Apriori Algorithm</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-group-title" data-i18n="sg6">General Tools</div>
-        <div class="skill-chips">
-          <span class="chip">Git / GitHub</span><span class="chip">Linux</span><span class="chip">VS Code</span>
-          <span class="chip">Firebase</span><span class="chip">MS Teams</span>
-        </div>
+      <div class="infocard">
+        <dl>
+          <dt data-i18n="about.locLabel">LOCATION</dt><dd>Damanhour, Beheira, Egypt</dd>
+          <dt data-i18n="about.instLabel">INSTITUTION</dt><dd>Alexandria National University</dd>
+          <dt data-i18n="about.degLabel">DEGREE</dt><dd data-i18n="about.degValue">B.Sc. Computer & Systems Engineering — Cybersecurity Track</dd>
+          <dt data-i18n="about.gradLabel">EXPECTED GRADUATION</dt><dd>2027</dd>
+          <dt data-i18n="about.langLabel">LANGUAGES</dt><dd data-i18n="about.langValue">Arabic (Native), English (Professional)</dd>
+        </dl>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="projects">
-  <div class="container">
-    <div class="sec-head"><span class="sec-tag">05</span><h2 class="sec-title" data-i18n="proj_title">projects</h2></div>
-    <div class="proj-grid">
+  <div class="wrap"><div class="divider"></div></div>
 
-      <div class="card proj-card">
-        <div class="proj-num">// 01</div>
-        <div class="proj-title" data-i18n="p1_title">Malware Detection via Memory Forensics</div>
-        <div class="proj-desc" data-i18n="p1_desc">ML capstone project classifying malware families from memory-dump features, deployed as a live Streamlit app.</div>
-        <ul class="proj-list">
-          <li data-i18n="p1_l1">Trained &amp; evaluated classifiers on the CIC-MalMem-2022 dataset</li>
-          <li data-i18n="p1_l2">Built and deployed an interactive Streamlit app on Hugging Face Spaces</li>
-          <li data-i18n="p1_l3">Instructor-approved capstone deliverable</li>
-        </ul>
-        <div class="proj-tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Streamlit</span></div>
-      </div>
+  <section id="skills" class="wrap">
+    <div class="eyebrow" data-i18n="skills.eyebrow">// TOOLKIT</div>
+    <h2 data-i18n="skills.title">Skills</h2>
+    <div class="skill-groups" id="skillGroups"></div>
+  </section>
 
-      <div class="card proj-card">
-        <div class="proj-num">// 02</div>
-        <div class="proj-title" data-i18n="p2_title">Web Vulnerability Assessment &amp; Penetration Testing</div>
-        <div class="proj-desc" data-i18n="p2_desc">Manual security testing against intentionally vulnerable web applications.</div>
-        <ul class="proj-list">
-          <li data-i18n="p2_l1">Assessed DVWA and OWASP Juice Shop environments</li>
-          <li data-i18n="p2_l2">Exploited SQL Injection, XSS, and Broken Access Control</li>
-          <li data-i18n="p2_l3">Delivered reports with impact analysis mapped to OWASP Top 10</li>
-        </ul>
-        <div class="proj-tags"><span class="tag">Burp Suite</span><span class="tag">OWASP</span></div>
-      </div>
+  <div class="wrap"><div class="divider"></div></div>
 
-      <div class="card proj-card">
-        <div class="proj-num">// 03</div>
-        <div class="proj-title" data-i18n="p3_title">Cryptography Algorithms Implementation</div>
-        <div class="proj-desc" data-i18n="p3_desc">Classic and modern cipher implementations plus a secure-messaging prototype.</div>
-        <ul class="proj-list">
-          <li data-i18n="p3_l1">Implemented AES, DES, Caesar, Playfair, Vigenère, Rail Fence</li>
-          <li data-i18n="p3_l2">Built a secure message prototype using hashing &amp; digital signatures</li>
-        </ul>
-        <div class="proj-tags"><span class="tag">Python</span><span class="tag" data-i18n="p3_tag2">Cryptography</span></div>
-      </div>
+  <section id="coursework" class="wrap">
+    <div class="eyebrow" data-i18n="course.eyebrow">// CURRENT MODULES</div>
+    <h2 data-i18n="course.title">Coursework</h2>
+    <div class="tagcloud" id="courseTags"></div>
+  </section>
 
-      <div class="card proj-card">
-        <div class="proj-num">// 04</div>
-        <div class="proj-title" data-i18n="p4_title">Student Dropout Prediction Model</div>
-        <div class="proj-desc" data-i18n="p4_desc">Classification model predicting dropout risk from academic performance data.</div>
-        <ul class="proj-list">
-          <li data-i18n="p4_l1">Applied hierarchical clustering and classification algorithms</li>
-          <li data-i18n="p4_l2">Handled preprocessing for a real-world messy dataset</li>
-        </ul>
-        <div class="proj-tags"><span class="tag" data-i18n="p4_tag1">Data Mining</span><span class="tag">ML</span></div>
-      </div>
+  <div class="wrap"><div class="divider"></div></div>
 
-      <div class="card proj-card">
-        <div class="proj-num">// 05</div>
-        <div class="proj-title" data-i18n="p5_title">Retail Market Basket Analysis</div>
-        <div class="proj-desc" data-i18n="p5_desc">Association-rule mining over large retail transaction datasets.</div>
-        <ul class="proj-list">
-          <li data-i18n="p5_l1">Implemented the Apriori algorithm</li>
-          <li data-i18n="p5_l2">Surfaced purchasing patterns for recommendation systems</li>
-        </ul>
-        <div class="proj-tags"><span class="tag">Apriori</span><span class="tag" data-i18n="p5_tag2">Data Mining</span></div>
-      </div>
+  <section id="projects" class="wrap">
+    <div class="eyebrow" data-i18n="proj.eyebrow">// SELECTED WORK</div>
+    <h2 data-i18n="proj.title">Projects</h2>
+    <div class="cases" id="caseList"></div>
+    <p class="more-projects" id="moreProjects"></p>
+  </section>
 
-      <div class="card proj-card">
-        <div class="proj-num">// 06</div>
-        <div class="proj-title" data-i18n="p6_title">CTF Competitions</div>
-        <div class="proj-desc" data-i18n="p6_desc">Ongoing participation in Capture The Flag events across multiple categories.</div>
-        <ul class="proj-list">
-          <li data-i18n="p6_l1">JWT "none"-algorithm exploitation</li>
-          <li data-i18n="p6_l2">Prototype pollution via Node.js JSON constructor injection</li>
-          <li data-i18n="p6_l3">PyInstaller reverse engineering &amp; custom XOR cipher recovery</li>
-        </ul>
-        <div class="proj-tags"><span class="tag">CTF</span><span class="tag">RE</span><span class="tag">Web Exploitation</span></div>
-      </div>
+  <div class="wrap"><div class="divider"></div></div>
 
-    </div>
-  </div>
-</section>
+  <section id="certs" class="wrap">
+    <div class="eyebrow" data-i18n="certs.eyebrow">// CREDENTIALS</div>
+    <h2 data-i18n="certs.title">Certifications</h2>
+    <div class="certs" id="certList"></div>
+  </section>
 
-<section id="soft">
-  <div class="container">
-    <div class="sec-head"><span class="sec-tag">06</span><h2 class="sec-title" data-i18n="soft_title">beyond the terminal</h2></div>
-    <div class="two-col">
-      <div class="card">
-        <div class="skill-group-title" data-i18n="soft_sub">Soft Skills</div>
-        <ul class="list-check">
-          <li data-i18n="s1">Problem solving &amp; analytical thinking</li>
-          <li data-i18n="s2">Technical report writing</li>
-          <li data-i18n="s3">Team collaboration &amp; agile communication</li>
-          <li data-i18n="s4">Time management</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="skill-group-title" data-i18n="lang_sub">Languages</div>
-        <div class="lang-row">
-          <span class="lang-name" data-i18n="lang_ar">Arabic</span>
-          <span class="lang-level" data-i18n="lang_native">Native</span>
-        </div>
-        <div class="bar"><div class="bar-fill" style="width:100%"></div></div>
-        <div style="height:16px"></div>
-        <div class="lang-row">
-          <span class="lang-name" data-i18n="lang_en">English</span>
-          <span class="lang-level" data-i18n="lang_prof">Professional</span>
-        </div>
-        <div class="bar"><div class="bar-fill" style="width:85%"></div></div>
+  <section id="contact" class="wrap">
+    <div class="contact-box">
+      <div class="eyebrow" style="justify-content:center;display:flex;" data-i18n="contact.eyebrow">// OPEN CHANNEL</div>
+      <h2 data-i18n="contact.title">Get in Touch</h2>
+      <p data-i18n="contact.desc">Available for internships, collaborations, and cybersecurity opportunities.</p>
+      <div class="contact-links">
+        <a href="https://github.com/abdelrahmanhossamshaat0001" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/abdelrahman-hossam-shaat" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:abdelrahmanhossamshaat@gmail.com">Email</a>
+        <a href="https://huggingface.co/abdelrahmanhossamshaat" target="_blank" rel="noopener">Hugging Face</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<footer id="contact">
-  <div class="container">
-    <div class="sec-head"><span class="sec-tag">07</span><h2 class="sec-title" data-i18n="contact_title">connect</h2></div>
-    <div class="contact-grid">
-      <a class="contact-card" href="mailto:abdelrahmanhossamshaat@gmail.com">
-        <div class="ic">&#x2709;</div>
-        <div class="lbl" data-i18n="c_email">EMAIL</div>
-        <div class="val">abdelrahmanhossamshaat@gmail.com</div>
-      </a>
-      <a class="contact-card" href="tel:+201556104898">
-        <div class="ic">&#x260E;</div>
-        <div class="lbl" data-i18n="c_phone">PHONE</div>
-        <div class="val">01556104898</div>
-      </a>
-      <a class="contact-card" href="https://github.com/abdelrahmanhossamshaat0001" target="_blank" rel="noopener">
-        <div class="ic">&#x1F5C2;</div>
-        <div class="lbl">GITHUB</div>
-        <div class="val">abdelrahmanhossamshaat0001</div>
-      </a>
-      <a class="contact-card" href="https://www.linkedin.com/in/abdelrahman-hossam-shaat/" target="_blank" rel="noopener">
-        <div class="ic">&#x1F517;</div>
-        <div class="lbl">LINKEDIN</div>
-        <div class="val" data-i18n="c_linkedin_val">abdelrahman-hossam-shaat</div>
-      </a>
-    </div>
-    <div class="foot-note"><span class="flag">flag{</span>thanks_for_scrolling<span class="flag">}</span> — Alexandria, Egypt</div>
-  </div>
-</footer>
+<footer><span data-i18n="footer.text">© 2026 ABDELRAHMAN HOSSAM SHAAT — STATUS: ACTIVE</span></footer>
 
 <script>
-const translations = {
-  en:{
-    term_running:"./run.sh --view=cv",
-    nav_about:"about", nav_edu:"education", nav_certs:"certs", nav_skills:"skills", nav_projects:"projects", nav_contact:"contact",
-    theme_btn:"DARK",
-    eyebrow:"status: online — open to opportunities",
-    hero_name:'Abdelrahman <span class="accent">Hossam Shaat</span>',
-    hero_role:'Cybersecurity Engineering student with hands-on experience in <strong>penetration testing</strong>, <strong>cryptography</strong> and <strong>machine learning</strong>. Building at the intersection of offensive security and applied AI.',
-    btn_github:"View GitHub", btn_linkedin:"LinkedIn", btn_email:"Email me",
-    about_title:"cat about.md",
-    about_p1:'<span class="hl">Egypt-based</span> Computer &amp; Systems Engineering student at Alexandria National University (ANU), Cybersecurity track, expected to graduate in 2027.',
-    about_p2:'Active <span class="hl">CTF player</span> — comfortable with web exploitation, reverse engineering, and cryptographic challenges. Also builds practical machine-learning systems, most recently a malware-detection model trained on memory-forensics data, deployed as a live Streamlit app.',
-    about_p3:'Comfortable moving between the Linux terminal, Burp Suite, a Solidity IDE, and a Jupyter notebook — depending on what the problem needs.',
-    edu_title:"education",
-    edu_degree:"B.Sc. Computer and Systems Engineering — Cybersecurity Track",
-    edu_grad:"Expected 2027",
-    c1:"Information Security Management", c2:"Data Integrity & Authentication", c3:"OS Security Architecture",
-    c4:"Blockchains & Solidity", c5:"Software Engineering", c6:"Network Security", c7:"Cryptography",
-    c8:"Web Penetration Testing", c9:"Machine Learning", c10:"Data Mining",
-    certs_title:"certifications",
-    cert1_name:"AWS Academy Graduate — Cloud Foundations", cert1_date:"April 2026",
-    cert2_name:"ISC2 CC Course Pre-assessment", cert2_date:"February 2026",
-    cert3_name:"Leadership & Employability Skills", cert3_org:"Ministry of Electricity, Egypt", cert3_date:"August 2025",
-    skills_title:"tech stack",
-    sg1:"Programming Languages", sg2:"Cybersecurity Tools", sg3:"Cloud", sg4:"Blockchain",
-    sg4_chip2:"Smart Contracts", sg4_chip3:"Blockchain Architecture",
-    sg5:"Data & AI", sg6:"General Tools",
-    proj_title:"projects",
-    p1_title:"Malware Detection via Memory Forensics",
-    p1_desc:"ML capstone project classifying malware families from memory-dump features, deployed as a live Streamlit app.",
-    p1_l1:"Trained & evaluated classifiers on the CIC-MalMem-2022 dataset",
-    p1_l2:"Built and deployed an interactive Streamlit app on Hugging Face Spaces",
-    p1_l3:"Instructor-approved capstone deliverable",
-    p2_title:"Web Vulnerability Assessment & Penetration Testing",
-    p2_desc:"Manual security testing against intentionally vulnerable web applications.",
-    p2_l1:"Assessed DVWA and OWASP Juice Shop environments",
-    p2_l2:"Exploited SQL Injection, XSS, and Broken Access Control",
-    p2_l3:"Delivered reports with impact analysis mapped to OWASP Top 10",
-    p3_title:"Cryptography Algorithms Implementation",
-    p3_desc:"Classic and modern cipher implementations plus a secure-messaging prototype.",
-    p3_l1:"Implemented AES, DES, Caesar, Playfair, Vigenère, Rail Fence",
-    p3_l2:"Built a secure message prototype using hashing & digital signatures",
-    p3_tag2:"Cryptography",
-    p4_title:"Student Dropout Prediction Model",
-    p4_desc:"Classification model predicting dropout risk from academic performance data.",
-    p4_l1:"Applied hierarchical clustering and classification algorithms",
-    p4_l2:"Handled preprocessing for a real-world messy dataset",
-    p4_tag1:"Data Mining",
-    p5_title:"Retail Market Basket Analysis",
-    p5_desc:"Association-rule mining over large retail transaction datasets.",
-    p5_l1:"Implemented the Apriori algorithm",
-    p5_l2:"Surfaced purchasing patterns for recommendation systems",
-    p5_tag2:"Data Mining",
-    p6_title:"CTF Competitions",
-    p6_desc:"Ongoing participation in Capture The Flag events across multiple categories.",
-    p6_l1:'JWT "none"-algorithm exploitation',
-    p6_l2:"Prototype pollution via Node.js JSON constructor injection",
-    p6_l3:"PyInstaller reverse engineering & custom XOR cipher recovery",
-    soft_title:"beyond the terminal",
-    soft_sub:"Soft Skills",
-    s1:"Problem solving & analytical thinking", s2:"Technical report writing",
-    s3:"Team collaboration & agile communication", s4:"Time management",
-    lang_sub:"Languages", lang_ar:"Arabic", lang_native:"Native", lang_en:"English", lang_prof:"Professional",
-    contact_title:"connect", c_email:"EMAIL", c_phone:"PHONE", c_linkedin_val:"abdelrahman-hossam-shaat"
+const content = {
+  en: {
+    brandRest: ".SHAAT",
+    nav:{about:"About",skills:"Skills",projects:"Projects",certs:"Certifications",contact:"Contact"},
+    hero:{
+      kicker:"SYSTEM STATUS: ONLINE",
+      name_html:"AbdElrahman <em>Hossam Shaat</em>",
+      role:"CYBERSECURITY TRACK · COMPUTER &amp; SYSTEMS ENGINEERING · ANU",
+      desc:"Cybersecurity student who learns by building — from penetration testing labs to machine learning models and secure smart contracts.",
+      ctaProjects:"View Projects", ctaGithub:"GitHub Profile",
+      terminal:[
+        {t:"prompt", text:"$ whoami"},
+        {t:"out", text:"abdelrahman_hossam — cybersecurity student, ANU"},
+        {t:"prompt", text:"$ cat focus.txt"},
+        {t:"out", text:"pentesting · cryptography · secure systems · ML"},
+        {t:"prompt", text:"$ status --check"},
+        {t:"out", text:"available for internships & collaboration"}
+      ]
+    },
+    about:{eyebrow:"// PROFILE", title:"About",
+      p1:"I'm a Computer & Systems Engineering student on the Cybersecurity track at Alexandria National University, expected to graduate in 2027. My coursework spans penetration testing, cryptography, secure software development, cloud computing, and machine learning.",
+      p2:"I learn by building — over 25 public repositories document my hands-on work, from vulnerability assessments on deliberately vulnerable apps to ML models and Solidity smart contracts. I'm also drawn to entrepreneurship, currently developing Decko, a desktop cybersecurity assistant.",
+      locLabel:"LOCATION", instLabel:"INSTITUTION", degLabel:"DEGREE",
+      degValue:"B.Sc. Computer & Systems Engineering — Cybersecurity Track",
+      gradLabel:"EXPECTED GRADUATION", langLabel:"LANGUAGES", langValue:"Arabic (Native), English (Professional)"
+    },
+    skills:{eyebrow:"// TOOLKIT", title:"Skills", groups:[
+      {name:"Programming", items:["Python","JavaScript","SQL","HTML5 / CSS3","Java","Dart & Flutter"]},
+      {name:"Cybersecurity", items:["OWASP Top 10","DVWA / Juice Shop","Burp Suite","Wireshark","Nmap"]},
+      {name:"Cloud & Systems", items:["AWS (IAM, EC2, S3, VPC, RDS)","Linux (basics)"]},
+      {name:"Data & AI", items:["Scikit-learn","Pandas","K-Means Clustering","Apriori Algorithm"]},
+      {name:"Tools", items:["Git / GitHub","VS Code","Firebase","MS Teams"]}
+    ]},
+    course:{eyebrow:"// CURRENT MODULES", title:"Coursework", items:[
+      "Data Structures & Algorithms","Databases","Data Integrity & Authentication","Blockchains & Solidity",
+      "Information Security Management","OS Security Architecture","Secure Software Development",
+      "Machine Learning","Data Mining","Cloud Computing","Mobile Programming (Flutter)","Web Programming",
+      "Software Engineering","Network Security & Cryptography","Web Penetration Testing","Probability & Statistics",
+      "Innovation & Entrepreneurship"
+    ]},
+    proj:{eyebrow:"// SELECTED WORK", title:"Projects",
+      moreText:"25+ repositories on GitHub — this is a curated selection.",
+      items:[
+        {tag:"01",cat:"Cryptography",name:"Data Integrity & Cryptography Toolkit",status:"Python · GitHub Repo",
+         desc:"Implemented AES, DES, Caesar, Playfair, Vigenère, and Rail Fence ciphers, plus a secure-message prototype using hashing and digital signatures.",
+         tags:["AES","DES","Digital Signatures"], link:"https://github.com/abdelrahmanhossamshaat0001/DATA-INEGRATY-project"},
+        {tag:"02",cat:"Machine Learning",name:"Malware Behavior Detector",status:"ML Capstone · Deployed",
+         desc:"Random Forest classifier trained on the CIC-MalMem-2022 dataset to detect malicious memory behavior, deployed as a live Streamlit app on Hugging Face Spaces.",
+         tags:["Random Forest","Streamlit","Malware Analysis"], link:"https://github.com/abdelrahmanhossamshaat0001/malware-behavior-detector-"},
+        {tag:"03",cat:"Data Mining",name:"ML & Data Mining Portfolio",status:"GitHub Repo",
+         desc:"A collection of projects including a student dropout prediction model (hierarchical clustering & classification) and a retail market-basket analysis using the Apriori algorithm.",
+         tags:["Clustering","Apriori","Classification"], link:"https://github.com/abdelrahmanhossamshaat0001/ML-Portfolio"},
+        {tag:"04",cat:"Static Analysis",name:"Semgrep Security Analysis — Mutillidae II",status:"GitHub Repo",
+         desc:"Custom Semgrep SAST rules written to detect SQL Injection and Command Injection / RCE vulnerabilities in the OWASP Mutillidae II application.",
+         tags:["Semgrep","SAST","SQL Injection"], link:"https://github.com/abdelrahmanhossamshaat0001/Mutillidae-Semgrep-Analysis"},
+        {tag:"05",cat:"Application Security",name:"Secure Authentication System (RBAC & 2FA)",status:"Node.js · GitHub Repo",
+         desc:"A Node.js authentication system with bcrypt password hashing, two-factor authentication (Speakeasy/QR), JWT session management, and role-based access control for Admin, Manager, and User roles.",
+         tags:["JWT","2FA","RBAC","bcrypt"], link:"https://github.com/abdelrahmanhossamshaat0001/Secure-Auth-System"}
+      ]
+    },
+    certs:{eyebrow:"// CREDENTIALS", title:"Certifications", items:[
+      {name:"AWS Academy Graduate — Cloud Foundations", org:"Amazon Web Services", date:"Apr 2026"},
+      {name:"ISC2 CC Course Pre-assessment", org:"ISC2", date:"Feb 2026"},
+      {name:"Leadership & Employability Skills", org:"Ministry of Electricity, Egypt", date:"Aug 2025"}
+    ]},
+    contact:{eyebrow:"// OPEN CHANNEL", title:"Get in Touch", desc:"Available for internships, collaborations, and cybersecurity opportunities."},
+    footer:{text:"© 2026 ABDELRAHMAN HOSSAM SHAAT — STATUS: ACTIVE"},
+    stats:[{n:"25+",l:"GitHub Repos"},{n:"5",l:"Featured Projects"},{n:"3",l:"Certifications"},{n:"17",l:"Course Modules"}]
   },
-  ar:{
-    term_running:"./تشغيل.sh --عرض=السيرة_الذاتية",
-    nav_about:"نبذة", nav_edu:"التعليم", nav_certs:"الشهادات", nav_skills:"المهارات", nav_projects:"المشاريع", nav_contact:"تواصل",
-    theme_btn:"داكن",
-    eyebrow:"الحالة: متصل — متاح لفرص عمل جديدة",
-    hero_name:'عبدالرحمن <span class="accent">حسام شعت</span>',
-    hero_role:'طالب هندسة أنظمة وحاسبات، تخصص أمن سيبراني، بخبرة عملية في <strong>اختبار الاختراق</strong> و<strong>التشفير</strong> و<strong>تعلم الآلة</strong>. أبني في نقطة التقاء الأمن الهجومي والذكاء الاصطناعي التطبيقي.',
-    btn_github:"عرض جيت هَب", btn_linkedin:"لينكدإن", btn_email:"راسلني",
-    about_title:"عرض ملف about.md",
-    about_p1:'طالب <span class="hl">مقيم في مصر</span> بكلية هندسة الأنظمة والحاسبات في جامعة الإسكندرية الأهلية (ANU)، تخصص الأمن السيبراني، ومن المتوقع تخرجه عام 2027.',
-    about_p2:'لاعب <span class="hl">CTF</span> نشِط — متمكّن من اختراق الويب، الهندسة العكسية، وتحديات التشفير. كما يبني أنظمة تعلم آلة عملية، وآخرها نموذج للكشف عن البرمجيات الخبيثة اعتمادًا على بيانات الذاكرة، تم نشره كتطبيق Streamlit مباشر.',
-    about_p3:'يتنقّل بارتياح بين طرفية لينكس، Burp Suite، بيئة تطوير Solidity، ودفتر Jupyter — حسب ما تحتاجه المشكلة.',
-    edu_title:"التعليم",
-    edu_degree:"بكالوريوس هندسة الأنظمة والحاسبات — تخصص أمن سيبراني",
-    edu_grad:"التخرج المتوقع 2027",
-    c1:"إدارة أمن المعلومات", c2:"سلامة البيانات والتوثيق", c3:"أمن أنظمة التشغيل",
-    c4:"البلوك تشين و Solidity", c5:"هندسة البرمجيات", c6:"أمن الشبكات", c7:"التشفير",
-    c8:"اختبار اختراق الويب", c9:"تعلم الآلة", c10:"تنقيب البيانات",
-    certs_title:"الشهادات",
-    cert1_name:"AWS Academy Graduate — أساسيات الحوسبة السحابية", cert1_date:"أبريل 2026",
-    cert2_name:"تقييم مبدئي لدورة ISC2 CC", cert2_date:"فبراير 2026",
-    cert3_name:"مهارات القيادة والتأهيل للتوظيف", cert3_org:"وزارة الكهرباء، مصر", cert3_date:"أغسطس 2025",
-    skills_title:"الأدوات التقنية",
-    sg1:"لغات البرمجة", sg2:"أدوات الأمن السيبراني", sg3:"الحوسبة السحابية", sg4:"البلوك تشين",
-    sg4_chip2:"العقود الذكية", sg4_chip3:"بنية البلوك تشين",
-    sg5:"البيانات والذكاء الاصطناعي", sg6:"أدوات عامة",
-    proj_title:"المشاريع",
-    p1_title:"الكشف عن البرمجيات الخبيثة عبر تحليل الذاكرة",
-    p1_desc:"مشروع تخرّج بتعلم الآلة لتصنيف عائلات البرمجيات الخبيثة من بيانات تفريغ الذاكرة، منشور كتطبيق Streamlit مباشر.",
-    p1_l1:"تدريب وتقييم نماذج تصنيف على مجموعة بيانات CIC-MalMem-2022",
-    p1_l2:"بناء ونشر تطبيق Streamlit تفاعلي على Hugging Face Spaces",
-    p1_l3:"مشروع معتمد من المشرف الأكاديمي",
-    p2_title:"تقييم الثغرات واختبار اختراق الويب",
-    p2_desc:"اختبار أمني يدوي على تطبيقات ويب مصممة عمدًا لتكون ضعيفة.",
-    p2_l1:"تقييم بيئتي DVWA و OWASP Juice Shop",
-    p2_l2:"استغلال ثغرات SQL Injection وXSS وBroken Access Control",
-    p2_l3:"تقارير فنية بتحليل الأثر وفق قائمة OWASP Top 10",
-    p3_title:"تنفيذ خوارزميات التشفير",
-    p3_desc:"تنفيذ خوارزميات تشفير كلاسيكية وحديثة، مع نموذج أولي للمراسلة الآمنة.",
-    p3_l1:"تنفيذ AES وDES وCaesar وPlayfair وVigenère وRail Fence",
-    p3_l2:"بناء نموذج مراسلة آمن باستخدام التجزئة والتوقيع الرقمي",
-    p3_tag2:"تشفير",
-    p4_title:"نموذج توقع تسرب الطلاب",
-    p4_desc:"نموذج تصنيف يتوقع احتمالية تسرب الطلاب من بيانات الأداء الأكاديمي.",
-    p4_l1:"تطبيق التجميع الهرمي وخوارزميات التصنيف",
-    p4_l2:"معالجة أولية لبيانات واقعية غير منظمة",
-    p4_tag1:"تنقيب بيانات",
-    p5_title:"تحليل سلة السوق للتجزئة",
-    p5_desc:"تنقيب عن قواعد الارتباط في مجموعات بيانات معاملات تجزئة كبيرة.",
-    p5_l1:"تنفيذ خوارزمية Apriori",
-    p5_l2:"استخراج أنماط الشراء لأنظمة التوصية",
-    p5_tag2:"تنقيب بيانات",
-    p6_title:"مسابقات CTF",
-    p6_desc:"مشاركة مستمرة في مسابقات Capture The Flag عبر عدة مجالات.",
-    p6_l1:'استغلال خوارزمية JWT من نوع "none"',
-    p6_l2:"استغلال Prototype Pollution عبر حقن JSON constructor في Node.js",
-    p6_l3:"هندسة عكسية لملفات PyInstaller واسترجاع تشفير XOR مخصص",
-    soft_title:"خارج نطاق الطرفية",
-    soft_sub:"المهارات الشخصية",
-    s1:"حل المشكلات والتفكير التحليلي", s2:"كتابة التقارير الفنية",
-    s3:"العمل الجماعي والتواصل وفق منهجية Agile", s4:"إدارة الوقت",
-    lang_sub:"اللغات", lang_ar:"العربية", lang_native:"اللغة الأم", lang_en:"الإنجليزية", lang_prof:"احترافي",
-    contact_title:"تواصل معي", c_email:"البريد الإلكتروني", c_phone:"الهاتف", c_linkedin_val:"abdelrahman-hossam-shaat"
+  ar: {
+    brandRest: ".شعت",
+    nav:{about:"نبذة",skills:"المهارات",projects:"المشاريع",certs:"الشهادات",contact:"تواصل"},
+    hero:{
+      kicker:"حالة النظام: متصل",
+      name_html:"عبدالرحمن <em>حسام شعت</em>",
+      role:"مسار الأمن السيبراني · هندسة الحاسبات والنظم · ANU",
+      desc:"طالب أمن سيبراني بيتعلم عن طريق البناء الفعلي — من اختبارات الاختراق لنماذج الذكاء الاصطناعي والعقود الذكية الآمنة.",
+      ctaProjects:"شوف المشاريع", ctaGithub:"صفحة GitHub",
+      terminal:[
+        {t:"prompt", text:"$ whoami"},
+        {t:"out", text:"عبدالرحمن حسام — طالب أمن سيبراني، ANU"},
+        {t:"prompt", text:"$ cat focus.txt"},
+        {t:"out", text:"اختبار اختراق · تشفير · أنظمة آمنة · تعلم آلة"},
+        {t:"prompt", text:"$ status --check"},
+        {t:"out", text:"متاح للتدريب والتعاون"}
+      ]
+    },
+    about:{eyebrow:"// نبذة", title:"نبذة عني",
+      p1:"أنا طالب هندسة حاسبات ونظم، مسار الأمن السيبراني، في جامعة الإسكندرية الأهلية، وموعد التخرج المتوقع 2027. المواد اللي بدرسها بتغطي اختبار الاختراق، التشفير، تطوير البرمجيات الآمن، الحوسبة السحابية، والتعلم الآلي.",
+      p2:"بتعلم عن طريق البناء الفعلي — عندي أكتر من 25 مستودع عام على GitHub بيوثقوا شغلي العملي، من تقييمات الثغرات على تطبيقات ضعيفة بقصد للتدريب، لنماذج ML وعقود Solidity ذكية. كمان مهتم بريادة الأعمال، وحاليًا بطور Decko، مساعد أمن سيبراني لسطح المكتب.",
+      locLabel:"الموقع", instLabel:"الجامعة", degLabel:"الدرجة العلمية",
+      degValue:"بكالوريوس هندسة حاسبات ونظم — مسار الأمن السيبراني",
+      gradLabel:"موعد التخرج المتوقع", langLabel:"اللغات", langValue:"العربية (لغة أم)، الإنجليزية (احترافي)"
+    },
+    skills:{eyebrow:"// الأدوات", title:"المهارات", groups:[
+      {name:"البرمجة", items:["Python","JavaScript","SQL","HTML5 / CSS3","Java","Dart & Flutter"]},
+      {name:"الأمن السيبراني", items:["OWASP Top 10","DVWA / Juice Shop","Burp Suite","Wireshark","Nmap"]},
+      {name:"السحابة والأنظمة", items:["AWS (IAM, EC2, S3, VPC, RDS)","Linux (أساسيات)"]},
+      {name:"البيانات والذكاء الاصطناعي", items:["Scikit-learn","Pandas","K-Means Clustering","خوارزمية Apriori"]},
+      {name:"الأدوات", items:["Git / GitHub","VS Code","Firebase","MS Teams"]}
+    ]},
+    course:{eyebrow:"// المواد الحالية", title:"المواد الدراسية", items:[
+      "هياكل البيانات والخوارزميات","قواعد البيانات","سلامة البيانات والتوثيق","البلوك تشين و Solidity",
+      "إدارة أمن المعلومات","أمن أنظمة التشغيل","تطوير البرمجيات الآمن",
+      "تعلم الآلة","تنقيب البيانات","الحوسبة السحابية","برمجة الموبايل (Flutter)","برمجة الويب",
+      "هندسة البرمجيات","أمن الشبكات والتشفير","اختبار اختراق الويب","الاحتمالات والإحصاء",
+      "الابتكار وريادة الأعمال"
+    ]},
+    proj:{eyebrow:"// أبرز الأعمال", title:"المشاريع",
+      moreText:"أكتر من 25 مستودع على GitHub — دي مجموعة مختارة منهم.",
+      items:[
+        {tag:"01",cat:"تشفير",name:"أدوات سلامة البيانات والتشفير",status:"Python · مستودع GitHub",
+         desc:"نفّذت خوارزميات AES وDES وCaesar وPlayfair وVigenère وRail Fence، بالإضافة لنموذج رسالة آمنة باستخدام الـ Hashing والتوقيع الرقمي.",
+         tags:["AES","DES","التوقيع الرقمي"], link:"https://github.com/abdelrahmanhossamshaat0001/DATA-INEGRATY-project"},
+        {tag:"02",cat:"تعلم آلة",name:"كاشف سلوك البرمجيات الخبيثة",status:"مشروع تخرج ML · شغال لايف",
+         desc:"نموذج Random Forest اتدرب على بيانات CIC-MalMem-2022 لاكتشاف السلوك الخبيث، ومنشور كتطبيق Streamlit شغال على Hugging Face Spaces.",
+         tags:["Random Forest","Streamlit","تحليل برمجيات خبيثة"], link:"https://github.com/abdelrahmanhossamshaat0001/malware-behavior-detector-"},
+        {tag:"03",cat:"تنقيب بيانات",name:"مجموعة مشاريع ML وتنقيب البيانات",status:"مستودع GitHub",
+         desc:"مجموعة مشاريع فيها نموذج توقع تسرب الطلاب (Hierarchical Clustering وClassification) وتحليل سلة السوق للتجزئة باستخدام خوارزمية Apriori.",
+         tags:["Clustering","Apriori","Classification"], link:"https://github.com/abdelrahmanhossamshaat0001/ML-Portfolio"},
+        {tag:"04",cat:"تحليل ثغرات ثابت",name:"تحليل أمني بـ Semgrep — Mutillidae II",status:"مستودع GitHub",
+         desc:"كتبت قواعد Semgrep مخصصة (SAST) لاكتشاف ثغرات SQL Injection وCommand Injection / RCE في تطبيق OWASP Mutillidae II.",
+         tags:["Semgrep","SAST","SQL Injection"], link:"https://github.com/abdelrahmanhossamshaat0001/Mutillidae-Semgrep-Analysis"},
+        {tag:"05",cat:"أمن التطبيقات",name:"نظام مصادقة آمن (RBAC & 2FA)",status:"Node.js · مستودع GitHub",
+         desc:"نظام مصادقة بـ Node.js فيه تشفير كلمات مرور بـ bcrypt، مصادقة ثنائية (Speakeasy/QR)، إدارة جلسات بـ JWT، وتحكم بالصلاحيات حسب الدور (Admin, Manager, User).",
+         tags:["JWT","2FA","RBAC","bcrypt"], link:"https://github.com/abdelrahmanhossamshaat0001/Secure-Auth-System"}
+      ]
+    },
+    certs:{eyebrow:"// الشهادات", title:"الشهادات", items:[
+      {name:"AWS Academy Graduate — Cloud Foundations", org:"Amazon Web Services", date:"أبريل 2026"},
+      {name:"ISC2 CC Course Pre-assessment", org:"ISC2", date:"فبراير 2026"},
+      {name:"مهارات القيادة والتأهيل للتوظيف", org:"وزارة الكهرباء، مصر", date:"أغسطس 2025"}
+    ]},
+    contact:{eyebrow:"// تواصل", title:"تواصل معايا", desc:"متاح لفرص التدريب والتعاون في مجال الأمن السيبراني."},
+    footer:{text:"© 2026 عبدالرحمن حسام شعت — الحالة: نشط"},
+    stats:[{n:"+25",l:"مستودع GitHub"},{n:"5",l:"مشاريع مختارة"},{n:"3",l:"شهادات"},{n:"17",l:"مادة دراسية"}]
   }
 };
 
-let currentLang = "en";
+let currentLang = 'en';
 
-function applyLang(lang){
-  currentLang = lang;
-  const dict = translations[lang];
-  document.documentElement.lang = lang === "ar" ? "ar" : "en";
-  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    const key = el.getAttribute("data-i18n");
-    if(dict[key] !== undefined){ el.innerHTML = dict[key]; }
+function renderStatic(lang){
+  const c = content[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const path = el.getAttribute('data-i18n').split('.');
+    let val = c; path.forEach(p=>{ if(val) val = val[p]; });
+    if(val !== undefined) el.innerHTML = val;
   });
-  runTerminal();
+  document.querySelector('[data-i18n="hero.name"]').innerHTML = c.hero.name_html;
 }
 
-document.getElementById("langToggle").addEventListener("click", ()=>{
-  applyLang(currentLang === "en" ? "ar" : "en");
+function renderSkills(lang){
+  const c = content[lang];
+  document.getElementById('skillGroups').innerHTML = c.skills.groups.map(g=>`
+    <div class="skill-group"><h3>${g.name}</h3><ul>${g.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>
+  `).join('');
+}
+
+function renderCourses(lang){
+  document.getElementById('courseTags').innerHTML = content[lang].course.items.map(i=>`<span>${i}</span>`).join('');
+}
+
+function renderProjects(lang){
+  const c = content[lang];
+  document.getElementById('caseList').innerHTML = c.proj.items.map(p=>`
+    <article class="case">
+      <span class="case-tab">${p.tag} — ${p.cat.toUpperCase()}</span>
+      <div class="case-body">
+        <h3>${p.name}</h3>
+        <span class="status">${p.status}</span>
+        <p>${p.desc}</p>
+        <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        ${p.link ? `<div class="case-links"><a href="${p.link}" target="_blank" rel="noopener">GitHub ↗</a></div>` : ''}
+      </div>
+    </article>
+  `).join('');
+  document.getElementById('moreProjects').textContent = c.proj.moreText;
+}
+
+function renderStats(lang){
+  document.getElementById('statsStrip').innerHTML = content[lang].stats.map(s=>`
+    <div class="stat"><b>${s.n}</b><span>${s.l}</span></div>
+  `).join('');
+}
+
+function renderCerts(lang){
+  document.getElementById('certList').innerHTML = content[lang].certs.items.map(x=>`
+    <div class="cert">
+      <div><div class="cert-name">${x.name}</div><div class="cert-org">${x.org}</div></div>
+      <div class="cert-date">${x.date}</div>
+    </div>
+  `).join('');
+}
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function renderTerminal(lang){
+  const lines = content[lang].hero.terminal;
+  const body = document.getElementById('termBody');
+  body.innerHTML = '';
+  lines.forEach((l,i)=>{
+    const div = document.createElement('div');
+    div.className = 'term-line ' + l.t;
+    div.textContent = l.text;
+    if(!reduceMotion){ div.style.animationDelay = (i*0.35)+'s'; }
+    else { div.style.opacity = '1'; }
+    body.appendChild(div);
+  });
+  const cur = document.createElement('span');
+  cur.className = 'cursor';
+  body.appendChild(cur);
+}
+
+function renderAll(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.getElementById('langToggle').textContent = lang === 'ar' ? 'EN' : 'AR';
+  renderStatic(lang);
+  renderStats(lang);
+  renderSkills(lang);
+  renderCourses(lang);
+  renderProjects(lang);
+  renderCerts(lang);
+  renderTerminal(lang);
+}
+
+document.getElementById('langToggle').addEventListener('click', ()=>{
+  renderAll(currentLang === 'en' ? 'ar' : 'en');
 });
 
-// theme toggle
-function applyThemeLabel(){
-  const t = document.documentElement.getAttribute("data-theme");
-  const dict = translations[currentLang];
-  const btn = document.getElementById("themeToggle");
-  if(t === "dark"){ btn.textContent = currentLang==="ar" ? "داكن" : "DARK"; }
-  else { btn.textContent = currentLang==="ar" ? "فاتح" : "LIGHT"; }
-}
-document.getElementById("themeToggle").addEventListener("click", ()=>{
+const themeBtn = document.getElementById('themeToggle');
+themeBtn.addEventListener('click', ()=>{
   const html = document.documentElement;
-  const cur = html.getAttribute("data-theme");
-  html.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
-  applyThemeLabel();
+  const isLight = html.getAttribute('data-theme') === 'light';
+  html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+  themeBtn.textContent = isLight ? '☾' : '☀';
 });
 
-// typed terminal effect in hero widget
-let typeTimeout;
-function runTerminal(){
-  clearTimeout(typeTimeout);
-  const el = document.getElementById("typedTerm");
-  el.innerHTML = "";
-  const seq = currentLang === "ar" ? [
-    {p:"$ whoami", o:"عبدالرحمن حسام شعت"},
-    {p:"$ cat role.txt", o:"طالب أمن سيبراني | لاعب CTF | مهتم بتعلم الآلة"},
-    {p:"$ ./scan.sh --target=career", o:"جاري الفحص... الثغرات: 0 | المهارات المحمّلة: Python, Solidity, OWASP..."},
-    {p:"$ echo $STATUS", o:"متاح للتدريب والتوظيف ✓"}
-  ] : [
-    {p:"$ whoami", o:"Abdelrahman Hossam Shaat"},
-    {p:"$ cat role.txt", o:"Cybersecurity Student | CTF Player | ML Enthusiast"},
-    {p:"$ ./scan.sh --target=career", o:"Scanning... vulnerabilities: 0 | skills loaded: Python, Solidity, OWASP..."},
-    {p:"$ echo $STATUS", o:"Open to internships & full-time roles ✓"}
-  ];
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', ()=>{
+  const open = navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+  navLinks.classList.remove('open');
+  navToggle.setAttribute('aria-expanded','false');
+}));
 
-  let i = 0;
-  function nextLine(){
-    if(i >= seq.length){
-      const cursor = document.createElement("div");
-      cursor.className = "tw-line";
-      cursor.innerHTML = '<span class="tw-prompt">$</span> <span class="tw-cursor"></span>';
-      el.appendChild(cursor);
-      return;
-    }
-    const item = seq[i];
-    const pLine = document.createElement("div");
-    pLine.className = "tw-line";
-    pLine.innerHTML = '<span class="tw-prompt">'+item.p+'</span>';
-    el.appendChild(pLine);
-    typeTimeout = setTimeout(()=>{
-      const oLine = document.createElement("div");
-      oLine.className = "tw-line tw-out";
-      oLine.textContent = item.o;
-      el.appendChild(oLine);
-      i++;
-      typeTimeout = setTimeout(nextLine, 420);
-    }, 380);
-  }
-  nextLine();
-}
-
-applyThemeLabel();
-runTerminal();
+renderAll('en');
 </script>
+
 </body>
 </html>
