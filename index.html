@@ -124,10 +124,22 @@
   .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
   .tag{font-family:var(--font-mono);font-size:11px;border:1px solid var(--border);color:var(--accent);padding:4px 10px;}
   .case-links{font-family:var(--font-mono);font-size:13px;}
-  .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:14px;}
-  .shots a{display:block;border:1px solid var(--border);overflow:hidden;line-height:0;}
-  .shots img{width:100%;height:90px;object-fit:cover;object-position:top;filter:saturate(.9);transition:transform .3s,filter .3s;}
-  .shots a:hover img{transform:scale(1.06);filter:saturate(1.1);}
+  .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:10px;}
+  .shot{border:1px solid var(--border);overflow:hidden;cursor:pointer;background:var(--bg);}
+  .shot img{width:100%;height:90px;object-fit:cover;object-position:top;display:block;filter:saturate(.9);transition:transform .3s,filter .3s;}
+  .shot:hover img{transform:scale(1.06);filter:saturate(1.1);}
+  .shot .cap{font-family:var(--font-mono);font-size:10px;color:var(--text-dim);padding:6px 8px;border-top:1px solid var(--border);line-height:1.4;}
+  .shot.hidden-shot{display:none;}
+  .shots.expanded .hidden-shot{display:block;}
+  .more-shots-btn{display:block;font-family:var(--font-mono);font-size:11px;color:var(--accent);background:transparent;border:1px dashed var(--border);padding:8px;cursor:pointer;width:100%;margin-bottom:14px;text-align:center;}
+  .more-shots-btn:hover{border-color:var(--accent);}
+
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:100;padding:30px;flex-direction:column;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:90vw;max-height:76vh;border:1px solid var(--border);}
+  .lightbox .lb-cap{font-family:var(--font-mono);font-size:13px;color:#EDEDEA;margin-top:16px;text-align:center;max-width:600px;}
+  .lightbox .lb-close{position:absolute;top:20px;inset-inline-end:24px;background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;font-family:var(--font-mono);padding:8px 14px;cursor:pointer;}
+  .lightbox .lb-close:hover{border-color:var(--accent);color:var(--accent);}
   .more-projects{text-align:center;margin-top:26px;font-family:var(--font-mono);font-size:13px;color:var(--text-dim);}
 
   .contact-box{border:1px solid var(--accent);padding:44px;text-align:center;background:var(--accent-soft);}
@@ -286,6 +298,12 @@
 
 <footer><span data-i18n="footer.text">© 2026 ABDELRAHMAN HOSSAM SHAAT — STATUS: ACTIVE</span></footer>
 
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
 <script>
 const content = {
   en: {
@@ -333,11 +351,20 @@ const content = {
         {tag:"01",cat:"Cryptography",name:"Secure Cookies & Digital Signature System",status:"Python · GitHub Repo",
          desc:"A three-part security demo built for Data Integrity & Authentication: HMAC-based cookie authentication with login and tag verification, an RSA digital signature module for signing and verifying files, and a bonus attack lab demonstrating Key Substitution and Message Key Substitution attacks against textbook RSA — with an explanation of how PSS padding and CA certificates prevent them.",
          tags:["HMAC","Digital Signatures","RSA Attacks"], link:"https://github.com/abdelrahmanhossamshaat0001/DATA-INEGRATY-project",
-         images:["images/data-integrity-01-cookie-mac.png","images/data-integrity-02-digital-signature.png","images/data-integrity-03-ksa-attack.png","images/data-integrity-04-mksa-attack.png"]},
+         images:[
+           {src:"images/data-integrity-01-cookie-mac.png", cap:"HMAC cookie login & tag verification"},
+           {src:"images/data-integrity-02-digital-signature.png", cap:"RSA digital signature — sign & verify a file"},
+           {src:"images/data-integrity-03-ksa-attack.png", cap:"Key Substitution Attack demo against textbook RSA"},
+           {src:"images/data-integrity-04-mksa-attack.png", cap:"Message Key Substitution Attack + how PSS/CA prevent it"}
+         ]},
         {tag:"02",cat:"Machine Learning",name:"Malware Behavior Detector",status:"ML Capstone · Deployed",
          desc:"An app that detects malicious behavior from features extracted from a memory dump, using a Random Forest model trained on the CIC-MalMem-2022 dataset. Built on a defensive principle — detecting abnormal behavior (code injection, process hiding, unusual handle/DLL counts) rather than trying to hide anything. Supports manual input of the top 10 features or a full CSV upload.",
          tags:["Random Forest","Streamlit","Malware Analysis"], link:"https://github.com/abdelrahmanhossamshaat0001/malware-behavior-detector-",
-         images:["images/malware-01-manual-input.png","images/malware-02-csv-upload.png","images/malware-03-model-accuracy.png"]},
+         images:[
+           {src:"images/malware-01-manual-input.png", cap:"Manual input of the top 10 features"},
+           {src:"images/malware-02-csv-upload.png", cap:"Full CSV upload option"},
+           {src:"images/malware-03-model-accuracy.png", cap:"Model evaluation — ~99.9% accuracy"}
+         ]},
         {tag:"03",cat:"Data Mining",name:"ML & Data Mining Portfolio",status:"GitHub Repo",
          desc:"A collection of projects including a student dropout prediction model (hierarchical clustering & classification) and a retail market-basket analysis using the Apriori algorithm.",
          tags:["Clustering","Apriori","Classification"], link:"https://github.com/abdelrahmanhossamshaat0001/ML-Portfolio"},
@@ -403,11 +430,20 @@ const content = {
         {tag:"01",cat:"تشفير",name:"نظام كوكيز آمنة وتوقيع رقمي",status:"Python · مستودع GitHub",
          desc:"مشروع أمني بثلاث أجزاء لمادة سلامة البيانات والتوثيق: مصادقة كوكيز بـ HMAC (تسجيل دخول وتوليد وتحقق من الـ tag)، وحدة توقيع رقمي بـ RSA لتوقيع الملفات والتحقق منها، ومعمل هجمات إضافي بيوضح هجومي Key Substitution وMessage Key Substitution على RSA التقليدي — مع شرح إزاي PSS padding وشهادات CA بتمنعهم.",
          tags:["HMAC","توقيع رقمي","هجمات RSA"], link:"https://github.com/abdelrahmanhossamshaat0001/DATA-INEGRATY-project",
-         images:["images/data-integrity-01-cookie-mac.png","images/data-integrity-02-digital-signature.png","images/data-integrity-03-ksa-attack.png","images/data-integrity-04-mksa-attack.png"]},
+         images:[
+           {src:"images/data-integrity-01-cookie-mac.png", cap:"تسجيل دخول والتحقق من كوكيز HMAC"},
+           {src:"images/data-integrity-02-digital-signature.png", cap:"توقيع رقمي RSA — توقيع ملف والتحقق منه"},
+           {src:"images/data-integrity-03-ksa-attack.png", cap:"عرض هجوم Key Substitution على RSA التقليدي"},
+           {src:"images/data-integrity-04-mksa-attack.png", cap:"هجوم Message Key Substitution + إزاي PSS/CA بيمنعوه"}
+         ]},
         {tag:"02",cat:"تعلم آلة",name:"كاشف سلوك البرمجيات الخبيثة",status:"مشروع تخرج ML · شغال لايف",
          desc:"تطبيق بيكتشف السلوك الخبيث من خصائص مستخرجة من memory dump، باستخدام نموذج Random Forest اتدرب على بيانات CIC-MalMem-2022. مبني على مبدأ دفاعي — اكتشاف السلوك الغير طبيعي (code injection، إخفاء العمليات، عدد handles/DLLs غير طبيعي) بدل محاولة الإخفاء. بيدعم إدخال يدوي لأهم 10 خصائص أو رفع ملف CSV كامل.",
          tags:["Random Forest","Streamlit","تحليل برمجيات خبيثة"], link:"https://github.com/abdelrahmanhossamshaat0001/malware-behavior-detector-",
-         images:["images/malware-01-manual-input.png","images/malware-02-csv-upload.png","images/malware-03-model-accuracy.png"]},
+         images:[
+           {src:"images/malware-01-manual-input.png", cap:"إدخال يدوي لأهم 10 خصائص"},
+           {src:"images/malware-02-csv-upload.png", cap:"خيار رفع ملف CSV كامل"},
+           {src:"images/malware-03-model-accuracy.png", cap:"تقييم النموذج — دقة ~99.9%"}
+         ]},
         {tag:"03",cat:"تنقيب بيانات",name:"مجموعة مشاريع ML وتنقيب البيانات",status:"مستودع GitHub",
          desc:"مجموعة مشاريع فيها نموذج توقع تسرب الطلاب (Hierarchical Clustering وClassification) وتحليل سلة السوق للتجزئة باستخدام خوارزمية Apriori.",
          tags:["Clustering","Apriori","Classification"], link:"https://github.com/abdelrahmanhossamshaat0001/ML-Portfolio"},
@@ -455,21 +491,66 @@ function renderCourses(lang){
 
 function renderProjects(lang){
   const c = content[lang];
-  document.getElementById('caseList').innerHTML = c.proj.items.map(p=>`
+  document.getElementById('caseList').innerHTML = c.proj.items.map((p,pi)=>{
+    let shotsHtml = '';
+    if(p.images){
+      const shots = p.images.map((img,i)=>`
+        <div class="shot ${i>=2?'hidden-shot':''}" data-src="${img.src}" data-cap="${img.cap.replace(/"/g,'&quot;')}">
+          <img src="${img.src}" alt="${img.cap}" loading="lazy">
+          <div class="cap">${img.cap}</div>
+        </div>
+      `).join('');
+      const moreBtn = p.images.length > 2
+        ? `<button class="more-shots-btn" data-target="shots-${pi}-${lang}">${lang==='ar' ? `+ ${p.images.length-2} صور تانية` : `+ ${p.images.length-2} more screenshots`}</button>`
+        : '';
+      shotsHtml = `<div class="shots" id="shots-${pi}-${lang}">${shots}</div>${moreBtn}`;
+    }
+    return `
     <article class="case">
       <span class="case-tab">${p.tag} — ${p.cat.toUpperCase()}</span>
       <div class="case-body">
         <h3>${p.name}</h3>
         <span class="status">${p.status}</span>
         <p>${p.desc}</p>
-        ${p.images ? `<div class="shots">${p.images.map(src=>`<a href="${src}" target="_blank" rel="noopener"><img src="${src}" alt="${p.name} screenshot" loading="lazy"></a>`).join('')}</div>` : ''}
+        ${shotsHtml}
         <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
         ${p.link ? `<div class="case-links"><a href="${p.link}" target="_blank" rel="noopener">GitHub ↗</a></div>` : ''}
       </div>
     </article>
-  `).join('');
+  `;
+  }).join('');
   document.getElementById('moreProjects').textContent = c.proj.moreText;
+
+  document.querySelectorAll('.more-shots-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const target = document.getElementById(btn.getAttribute('data-target'));
+      target.classList.add('expanded');
+      btn.style.display = 'none';
+    });
+  });
+  document.querySelectorAll('.shot').forEach(shot=>{
+    shot.addEventListener('click', ()=>{
+      openLightbox(shot.getAttribute('data-src'), shot.getAttribute('data-cap'));
+    });
+  });
 }
+
+function openLightbox(src, cap){
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lbImg').alt = cap;
+  document.getElementById('lbCap').textContent = cap;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lightbox').addEventListener('click', (e)=>{
+  if(e.target.id === 'lightbox') closeLightbox();
+});
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape') closeLightbox();
+});
 
 function renderStats(lang){
   document.getElementById('statsStrip').innerHTML = content[lang].stats.map(s=>`
