@@ -124,6 +124,10 @@
   .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
   .tag{font-family:var(--font-mono);font-size:11px;border:1px solid var(--border);color:var(--accent);padding:4px 10px;}
   .case-links{font-family:var(--font-mono);font-size:13px;}
+  .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:14px;}
+  .shots a{display:block;border:1px solid var(--border);overflow:hidden;line-height:0;}
+  .shots img{width:100%;height:90px;object-fit:cover;object-position:top;filter:saturate(.9);transition:transform .3s,filter .3s;}
+  .shots a:hover img{transform:scale(1.06);filter:saturate(1.1);}
   .more-projects{text-align:center;margin-top:26px;font-family:var(--font-mono);font-size:13px;color:var(--text-dim);}
 
   .contact-box{border:1px solid var(--accent);padding:44px;text-align:center;background:var(--accent-soft);}
@@ -326,12 +330,14 @@ const content = {
     proj:{eyebrow:"// SELECTED WORK", title:"Projects",
       moreText:"25+ repositories on GitHub — this is a curated selection.",
       items:[
-        {tag:"01",cat:"Cryptography",name:"Data Integrity & Cryptography Toolkit",status:"Python · GitHub Repo",
-         desc:"Implemented AES, DES, Caesar, Playfair, Vigenère, and Rail Fence ciphers, plus a secure-message prototype using hashing and digital signatures.",
-         tags:["AES","DES","Digital Signatures"], link:"https://github.com/abdelrahmanhossamshaat0001/DATA-INEGRATY-project"},
+        {tag:"01",cat:"Cryptography",name:"Secure Cookies & Digital Signature System",status:"Python · GitHub Repo",
+         desc:"A three-part security demo built for Data Integrity & Authentication: HMAC-based cookie authentication with login and tag verification, an RSA digital signature module for signing and verifying files, and a bonus attack lab demonstrating Key Substitution and Message Key Substitution attacks against textbook RSA — with an explanation of how PSS padding and CA certificates prevent them.",
+         tags:["HMAC","Digital Signatures","RSA Attacks"], link:"https://github.com/abdelrahmanhossamshaat0001/DATA-INEGRATY-project",
+         images:["images/data-integrity-01-cookie-mac.png","images/data-integrity-02-digital-signature.png","images/data-integrity-03-ksa-attack.png","images/data-integrity-04-mksa-attack.png"]},
         {tag:"02",cat:"Machine Learning",name:"Malware Behavior Detector",status:"ML Capstone · Deployed",
-         desc:"Random Forest classifier trained on the CIC-MalMem-2022 dataset to detect malicious memory behavior, deployed as a live Streamlit app on Hugging Face Spaces.",
-         tags:["Random Forest","Streamlit","Malware Analysis"], link:"https://github.com/abdelrahmanhossamshaat0001/malware-behavior-detector-"},
+         desc:"An app that detects malicious behavior from features extracted from a memory dump, using a Random Forest model trained on the CIC-MalMem-2022 dataset. Built on a defensive principle — detecting abnormal behavior (code injection, process hiding, unusual handle/DLL counts) rather than trying to hide anything. Supports manual input of the top 10 features or a full CSV upload.",
+         tags:["Random Forest","Streamlit","Malware Analysis"], link:"https://github.com/abdelrahmanhossamshaat0001/malware-behavior-detector-",
+         images:["images/malware-01-manual-input.png","images/malware-02-csv-upload.png","images/malware-03-model-accuracy.png"]},
         {tag:"03",cat:"Data Mining",name:"ML & Data Mining Portfolio",status:"GitHub Repo",
          desc:"A collection of projects including a student dropout prediction model (hierarchical clustering & classification) and a retail market-basket analysis using the Apriori algorithm.",
          tags:["Clustering","Apriori","Classification"], link:"https://github.com/abdelrahmanhossamshaat0001/ML-Portfolio"},
@@ -394,12 +400,14 @@ const content = {
     proj:{eyebrow:"// أبرز الأعمال", title:"المشاريع",
       moreText:"أكتر من 25 مستودع على GitHub — دي مجموعة مختارة منهم.",
       items:[
-        {tag:"01",cat:"تشفير",name:"أدوات سلامة البيانات والتشفير",status:"Python · مستودع GitHub",
-         desc:"نفّذت خوارزميات AES وDES وCaesar وPlayfair وVigenère وRail Fence، بالإضافة لنموذج رسالة آمنة باستخدام الـ Hashing والتوقيع الرقمي.",
-         tags:["AES","DES","التوقيع الرقمي"], link:"https://github.com/abdelrahmanhossamshaat0001/DATA-INEGRATY-project"},
+        {tag:"01",cat:"تشفير",name:"نظام كوكيز آمنة وتوقيع رقمي",status:"Python · مستودع GitHub",
+         desc:"مشروع أمني بثلاث أجزاء لمادة سلامة البيانات والتوثيق: مصادقة كوكيز بـ HMAC (تسجيل دخول وتوليد وتحقق من الـ tag)، وحدة توقيع رقمي بـ RSA لتوقيع الملفات والتحقق منها، ومعمل هجمات إضافي بيوضح هجومي Key Substitution وMessage Key Substitution على RSA التقليدي — مع شرح إزاي PSS padding وشهادات CA بتمنعهم.",
+         tags:["HMAC","توقيع رقمي","هجمات RSA"], link:"https://github.com/abdelrahmanhossamshaat0001/DATA-INEGRATY-project",
+         images:["images/data-integrity-01-cookie-mac.png","images/data-integrity-02-digital-signature.png","images/data-integrity-03-ksa-attack.png","images/data-integrity-04-mksa-attack.png"]},
         {tag:"02",cat:"تعلم آلة",name:"كاشف سلوك البرمجيات الخبيثة",status:"مشروع تخرج ML · شغال لايف",
-         desc:"نموذج Random Forest اتدرب على بيانات CIC-MalMem-2022 لاكتشاف السلوك الخبيث، ومنشور كتطبيق Streamlit شغال على Hugging Face Spaces.",
-         tags:["Random Forest","Streamlit","تحليل برمجيات خبيثة"], link:"https://github.com/abdelrahmanhossamshaat0001/malware-behavior-detector-"},
+         desc:"تطبيق بيكتشف السلوك الخبيث من خصائص مستخرجة من memory dump، باستخدام نموذج Random Forest اتدرب على بيانات CIC-MalMem-2022. مبني على مبدأ دفاعي — اكتشاف السلوك الغير طبيعي (code injection، إخفاء العمليات، عدد handles/DLLs غير طبيعي) بدل محاولة الإخفاء. بيدعم إدخال يدوي لأهم 10 خصائص أو رفع ملف CSV كامل.",
+         tags:["Random Forest","Streamlit","تحليل برمجيات خبيثة"], link:"https://github.com/abdelrahmanhossamshaat0001/malware-behavior-detector-",
+         images:["images/malware-01-manual-input.png","images/malware-02-csv-upload.png","images/malware-03-model-accuracy.png"]},
         {tag:"03",cat:"تنقيب بيانات",name:"مجموعة مشاريع ML وتنقيب البيانات",status:"مستودع GitHub",
          desc:"مجموعة مشاريع فيها نموذج توقع تسرب الطلاب (Hierarchical Clustering وClassification) وتحليل سلة السوق للتجزئة باستخدام خوارزمية Apriori.",
          tags:["Clustering","Apriori","Classification"], link:"https://github.com/abdelrahmanhossamshaat0001/ML-Portfolio"},
@@ -454,6 +462,7 @@ function renderProjects(lang){
         <h3>${p.name}</h3>
         <span class="status">${p.status}</span>
         <p>${p.desc}</p>
+        ${p.images ? `<div class="shots">${p.images.map(src=>`<a href="${src}" target="_blank" rel="noopener"><img src="${src}" alt="${p.name} screenshot" loading="lazy"></a>`).join('')}</div>` : ''}
         <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
         ${p.link ? `<div class="case-links"><a href="${p.link}" target="_blank" rel="noopener">GitHub ↗</a></div>` : ''}
       </div>
