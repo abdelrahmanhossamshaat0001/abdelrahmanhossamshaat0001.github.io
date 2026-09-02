@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AbdElrahman Hossam Shaat | Cybersecurity Portfolio</title>
-<meta name="description" content="AbdElrahman Hossam Shaat — Cybersecurity Track, Computer & Systems Engineering, Alexandria National University.">
+<meta name="description" content="AbdElrahman Hossam Shaat — Junior Cybersecurity and Penetration Testing portfolio.">
 <style>
   :root{
     --bg:#0A0A0A; --bg-alt:#141414; --surface:#191919;
@@ -57,6 +57,9 @@
   .hero h1 em{font-style:normal;color:var(--accent);}
   .hero .role{font-family:var(--font-mono);font-size:14px;color:var(--text-dim);margin-top:14px;letter-spacing:.5px;}
   .hero p.desc{margin-top:20px;color:var(--text-dim);max-width:520px;font-size:15.5px;}
+  .portrait-card{position:relative;max-width:390px;margin-inline:auto;border:1px solid var(--border);background:var(--surface);padding:10px;box-shadow:0 24px 70px -25px rgba(0,0,0,.7);}
+  .portrait-card::before{content:'PROFILE // VERIFIED';position:absolute;left:-1px;bottom:-30px;background:var(--accent);color:#fff;font-family:var(--font-mono);font-size:10px;letter-spacing:1.5px;padding:6px 12px;}
+  .portrait-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;filter:saturate(.92) contrast(1.03);}
   .hero-cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
   .btn{font-family:var(--font-mono);font-size:13px;letter-spacing:.5px;padding:12px 20px;border:1px solid var(--accent);color:var(--accent);display:inline-block;transition:.2s;}
   .btn:hover{background:var(--accent);color:#fff;text-decoration:none;}
@@ -101,6 +104,14 @@
   .skill-group ul{list-style:none;}
   .skill-group li{padding:6px 0;font-size:14px;color:var(--text-dim);border-bottom:1px dashed var(--border);}
   .skill-group li:last-child{border-bottom:none;}
+
+  .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .service{border:1px solid var(--border);background:var(--surface);padding:24px;transition:border-color .2s,transform .2s;}
+  .service:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .service .num{font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:2px;}
+  .service h3{font-family:var(--font-display);font-weight:400;font-size:20px;margin:10px 0 8px;}
+  .service p{color:var(--text-dim);font-size:14px;}
+  @media(max-width:680px){.service-grid{grid-template-columns:1fr;}}
 
   .tagcloud{display:flex;flex-wrap:wrap;gap:10px;}
   .tagcloud span{font-family:var(--font-mono);font-size:12.5px;border:1px solid var(--border);padding:7px 13px;color:var(--text-dim);border-radius:2px;}
@@ -170,6 +181,7 @@
     <button class="ctrl-btn navtoggle" id="navToggle" aria-label="Menu" aria-expanded="false">MENU</button>
     <ul class="navlinks" id="navLinks">
       <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#services" data-i18n="nav.services">Services</a></li>
       <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
       <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
       <li><a href="#certs" data-i18n="nav.certs">Certifications</a></li>
@@ -188,20 +200,14 @@
       <div>
         <div class="kicker" data-i18n="hero.kicker">SYSTEM STATUS: ONLINE</div>
         <h1 data-i18n="hero.name">AbdElrahman <em>Hossam Shaat</em></h1>
-        <p class="role" data-i18n="hero.role">CYBERSECURITY TRACK · COMPUTER &amp; SYSTEMS ENGINEERING · ANU</p>
-        <p class="desc" data-i18n="hero.desc">Cybersecurity student who learns by building — from penetration testing labs to machine learning models and secure smart contracts.</p>
+        <p class="role" data-i18n="hero.role">JUNIOR CYBERSECURITY &amp; PENETRATION TESTING · COMPUTER SCIENCE STUDENT</p>
+        <p class="desc" data-i18n="hero.desc">I assess web applications and lab networks, validate vulnerabilities with evidence, and turn technical findings into clear, remediation-focused security reports.</p>
         <div class="hero-cta">
           <a class="btn filled" href="#projects" data-i18n="hero.ctaProjects">View Projects</a>
           <a class="btn" href="https://github.com/abdelrahmanhossamshaat0001" target="_blank" rel="noopener" data-i18n="hero.ctaGithub">GitHub Profile</a>
         </div>
       </div>
-      <div class="terminal">
-        <div class="term-bar">
-          <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
-          <span class="term-title">abdelrahman@ANU: ~</span>
-        </div>
-        <div class="term-body" id="termBody"></div>
-      </div>
+      <div class="portrait-card"><img src="images/abdelrahman-profile.jpg" alt="AbdElrahman Hossam Shaat" width="720" height="720"></div>
     </div>
   </div>
 
@@ -216,19 +222,27 @@
     <h2 data-i18n="about.title">About</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p data-i18n="about.p1">I'm a Computer & Systems Engineering student on the Cybersecurity track at Alexandria National University, expected to graduate in 2027. My coursework spans penetration testing, cryptography, secure software development, cloud computing, and machine learning.</p>
-        <p data-i18n="about.p2">I learn by building — over 25 public repositories document my hands-on work, from vulnerability assessments on deliberately vulnerable apps to ML models and Solidity smart contracts. I'm also drawn to entrepreneurship, currently developing Decko, a desktop cybersecurity assistant.</p>
+        <p data-i18n="about.p1">I'm a Computer Science student at Alexandria National University, specializing in cybersecurity and penetration testing, with an expected graduation date of 2027.</p>
+        <p data-i18n="about.p2">My hands-on work covers authorized black-box assessments, OWASP-aligned web testing, Linux privilege escalation labs, evidence-led reporting, cloud fundamentals, and machine-learning applications for defensive security.</p>
       </div>
       <div class="infocard">
         <dl>
           <dt data-i18n="about.locLabel">LOCATION</dt><dd>Damanhour, Beheira, Egypt</dd>
           <dt data-i18n="about.instLabel">INSTITUTION</dt><dd>Alexandria National University</dd>
-          <dt data-i18n="about.degLabel">DEGREE</dt><dd data-i18n="about.degValue">B.Sc. Computer & Systems Engineering — Cybersecurity Track</dd>
+          <dt data-i18n="about.degLabel">DEGREE</dt><dd data-i18n="about.degValue">B.Sc. Computer Science — Cybersecurity Track</dd>
           <dt data-i18n="about.gradLabel">EXPECTED GRADUATION</dt><dd>2027</dd>
           <dt data-i18n="about.langLabel">LANGUAGES</dt><dd data-i18n="about.langValue">Arabic (Native), English (Professional)</dd>
         </dl>
       </div>
     </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section id="services" class="wrap">
+    <div class="eyebrow" data-i18n="services.eyebrow">// CLIENT SERVICES</div>
+    <h2 data-i18n="services.title">Services</h2>
+    <div class="service-grid" id="serviceGrid"></div>
   </section>
 
   <div class="wrap"><div class="divider"></div></div>
@@ -308,12 +322,12 @@
 const content = {
   en: {
     brandRest: ".SHAAT",
-    nav:{about:"About",skills:"Skills",projects:"Projects",certs:"Certifications",contact:"Contact"},
+    nav:{about:"About",services:"Services",skills:"Skills",projects:"Projects",certs:"Certifications",contact:"Contact"},
     hero:{
       kicker:"SYSTEM STATUS: ONLINE",
       name_html:"AbdElrahman <em>Hossam Shaat</em>",
-      role:"CYBERSECURITY TRACK · COMPUTER &amp; SYSTEMS ENGINEERING · ANU",
-      desc:"Cybersecurity student who learns by building — from penetration testing labs to machine learning models and secure smart contracts.",
+      role:"JUNIOR CYBERSECURITY &amp; PENETRATION TESTING · COMPUTER SCIENCE STUDENT",
+      desc:"I assess web applications and lab networks, validate vulnerabilities with evidence, and turn technical findings into clear, remediation-focused security reports.",
       ctaProjects:"View Projects", ctaGithub:"GitHub Profile",
       terminal:[
         {t:"prompt", text:"$ whoami"},
@@ -325,18 +339,27 @@ const content = {
       ]
     },
     about:{eyebrow:"// PROFILE", title:"About",
-      p1:"I'm a Computer & Systems Engineering student on the Cybersecurity track at Alexandria National University, expected to graduate in 2027. My coursework spans penetration testing, cryptography, secure software development, cloud computing, and machine learning.",
-      p2:"I learn by building — over 25 public repositories document my hands-on work, from vulnerability assessments on deliberately vulnerable apps to ML models and Solidity smart contracts. I'm also drawn to entrepreneurship, currently developing Decko, a desktop cybersecurity assistant.",
+      p1:"I'm a Computer Science student at Alexandria National University, specializing in cybersecurity and penetration testing, with an expected graduation date of 2027.",
+      p2:"My hands-on work covers authorized black-box assessments, OWASP-aligned web testing, Linux privilege escalation labs, evidence-led reporting, cloud fundamentals, and machine-learning applications for defensive security.",
       locLabel:"LOCATION", instLabel:"INSTITUTION", degLabel:"DEGREE",
-      degValue:"B.Sc. Computer & Systems Engineering — Cybersecurity Track",
+      degValue:"B.Sc. Computer Science — Cybersecurity Track",
       gradLabel:"EXPECTED GRADUATION", langLabel:"LANGUAGES", langValue:"Arabic (Native), English (Professional)", locLabel2:"Damanhour, Egypt"
     },
+    services:{eyebrow:"// CLIENT SERVICES",title:"Security Services",items:[
+      {name:"Web Application Penetration Testing",desc:"Authorized, scope-based testing for OWASP Top 10 weaknesses, including injection, broken access control, authentication, and information-disclosure issues."},
+      {name:"Network Vulnerability Assessment",desc:"Service enumeration, vulnerability validation, risk prioritization, and practical hardening recommendations for authorized lab or client environments."},
+      {name:"Professional Security Reports",desc:"Clear executive and technical reports with evidence, attack paths, severity ratings, reproducible findings, and remediation guidance."},
+      {name:"Security Configuration Review",desc:"Review of authentication, access control, exposed services, security headers, and common cloud or Linux configuration risks."},
+      {name:"Defensive Malware Analysis",desc:"Behavior-focused analysis and machine-learning-assisted detection using memory-derived indicators and documented model evaluation."},
+      {name:"Security Evidence Review",desc:"Structured validation of security claims and evidence, with human-review checkpoints and defensible severity decisions."}
+    ]},
     skills:{eyebrow:"// TOOLKIT", title:"Skills", groups:[
       {name:"Programming", items:["Python","JavaScript","SQL","HTML5 / CSS3","Java","Dart & Flutter"]},
-      {name:"Cybersecurity", items:["OWASP Top 10","DVWA / Juice Shop","Burp Suite","Wireshark","Nmap"]},
-      {name:"Cloud & Systems", items:["AWS (IAM, EC2, S3, VPC, RDS)","Linux (basics)"]},
+      {name:"Cybersecurity", items:["Black-box Testing","Web App Pentesting","OWASP Top 10 / WSTG","Linux Privilege Escalation","Vulnerability Assessment"]},
+      {name:"Security Tools", items:["Burp Suite Professional","Nmap","Gobuster","Metasploit Framework","Wireshark","Netcat"]},
+      {name:"Cloud & Systems", items:["AWS (IAM, EC2, S3, VPC, RDS)","Huawei Cloud Fundamentals","Linux CLI","Bash","Computer Networking"]},
       {name:"Data & AI", items:["Scikit-learn","Pandas","K-Means Clustering","Apriori Algorithm"]},
-      {name:"Tools", items:["Git / GitHub","VS Code","Firebase","MS Teams"]}
+      {name:"Development Tools", items:["Git / GitHub","Streamlit","Gradio","VS Code","VirtualBox"]}
     ]},
     course:{eyebrow:"// CURRENT MODULES", title:"Coursework", items:[
       "Data Structures & Algorithms","Databases","Data Integrity & Authentication","Blockchains & Solidity",
@@ -346,53 +369,47 @@ const content = {
       "Innovation & Entrepreneurship"
     ]},
     proj:{eyebrow:"// SELECTED WORK", title:"Projects",
-      moreText:"25+ repositories on GitHub — this is a curated selection.",
+      moreText:"31 public repositories on GitHub — this is a security-focused selection.",
       items:[
-        {tag:"01",cat:"Cryptography",name:"Secure Cookies & Digital Signature System",status:"Python · GitHub Repo",
-         desc:"A three-part security demo built for Data Integrity & Authentication: HMAC-based cookie authentication with login and tag verification, an RSA digital signature module for signing and verifying files, and a bonus attack lab demonstrating Key Substitution and Message Key Substitution attacks against textbook RSA — with an explanation of how PSS padding and CA certificates prevent them.",
-         tags:["HMAC","Digital Signatures","RSA Attacks"], link:"https://github.com/abdelrahmanhossamshaat0001/DATA-INEGRATY-project",
-         images:[
-           {src:"images/data-integrity-01-cookie-mac.png", cap:"HMAC cookie login & tag verification"},
-           {src:"images/data-integrity-02-digital-signature.png", cap:"RSA digital signature — sign & verify a file"},
-           {src:"images/data-integrity-03-ksa-attack.png", cap:"Key Substitution Attack demo against textbook RSA"},
-           {src:"images/data-integrity-04-mksa-attack.png", cap:"Message Key Substitution Attack + how PSS/CA prevent it"}
-         ]},
-        {tag:"02",cat:"Machine Learning",name:"Malware Behavior Detector",status:"ML Capstone · Deployed",
-         desc:"An app that detects malicious behavior from features extracted from a memory dump, using a Random Forest model trained on the CIC-MalMem-2022 dataset. Built on a defensive principle — detecting abnormal behavior (code injection, process hiding, unusual handle/DLL counts) rather than trying to hide anything. Supports manual input of the top 10 features or a full CSV upload.",
-         tags:["Random Forest","Streamlit","Malware Analysis"], link:"https://github.com/abdelrahmanhossamshaat0001/malware-behavior-detector-",
-         images:[
-           {src:"images/malware-01-manual-input.png", cap:"Manual input of the top 10 features"},
-           {src:"images/malware-02-csv-upload.png", cap:"Full CSV upload option"},
-           {src:"images/malware-03-model-accuracy.png", cap:"Model evaluation — ~99.9% accuracy"}
-         ]},
-        {tag:"03",cat:"Data Mining",name:"ML & Data Mining Portfolio",status:"GitHub Repo",
-         desc:"A collection of projects including a student dropout prediction model (hierarchical clustering & classification) and a retail market-basket analysis using the Apriori algorithm.",
-         tags:["Clustering","Apriori","Classification"], link:"https://github.com/abdelrahmanhossamshaat0001/ML-Portfolio"},
-        {tag:"04",cat:"Static Analysis",name:"Semgrep Security Analysis — Mutillidae II",status:"GitHub Repo",
-         desc:"Custom Semgrep SAST rules written to detect SQL Injection and Command Injection / RCE vulnerabilities in the OWASP Mutillidae II application.",
-         tags:["Semgrep","SAST","SQL Injection"], link:"https://github.com/abdelrahmanhossamshaat0001/Mutillidae-Semgrep-Analysis"},
-        {tag:"05",cat:"Application Security",name:"Secure Authentication System (RBAC & 2FA)",status:"Node.js · GitHub Repo",
-         desc:"A Node.js authentication system with bcrypt password hashing, two-factor authentication (Speakeasy/QR), JWT session management, and role-based access control for Admin, Manager, and User roles.",
-         tags:["JWT","2FA","RBAC","bcrypt"], link:"https://github.com/abdelrahmanhossamshaat0001/Secure-Auth-System"}
+        {tag:"01",cat:"Web Application Security",name:"OWASP Juice Shop — Penetration Testing Report",status:"NTI Project · 28-page Report",
+         desc:"Authorized black-box assessment documenting 10 findings across SQL injection, stored/DOM/reflected XSS, broken access control, information disclosure, weak authentication, and sensitive JWT claims. The report includes reproducible evidence, impact, root cause, and remediation guidance.",
+         tags:["OWASP Top 10","Burp Suite","SQLi","XSS","IDOR"], link:"https://github.com/abdelrahmanhossamshaat0001/OWASP-Juice-Shop-Penetration-Testing-Report"},
+        {tag:"02",cat:"Network Penetration Testing",name:"Metasploitable 2 — Penetration Testing Report",status:"Authorized Lab · 26-page Report",
+         desc:"A full infrastructure assessment that documented eight findings and five independent unauthenticated paths to root-level command execution, covering vulnerable FTP, IRC, SMB, bind-shell, Java RMI, and database services.",
+         tags:["Nmap","Metasploit","Network Security","Root Access"], link:"https://github.com/abdelrahmanhossamshaat0001/Metasploitable2-Penetration-Testing-Report"},
+        {tag:"03",cat:"Attack Chain",name:"Kioptrix Level 3 — Black-box Assessment",status:"NTI Final Project · Root Compromise",
+         desc:"End-to-end assessment from reconnaissance and LotusCMS code execution through SQL injection, credential recovery, SSH access, and Linux privilege escalation via a dangerous sudo entitlement. Includes a full report and presentation.",
+         tags:["Nmap","Gobuster","RCE","SQLi","Privilege Escalation"], link:"https://github.com/abdelrahmanhossamshaat0001/Kioptrix3-Penetration-Testing-Report"},
+        {tag:"04",cat:"Attack Chain",name:"Kioptrix Level 2 — Penetration Testing Report",status:"Authorized Lab · 21-page Report",
+         desc:"A documented compromise chain from SQL injection authentication bypass to operating-system command injection, a Bash shell as apache, and root privilege escalation through CVE-2009-2698.",
+         tags:["SQL Injection","Command Injection","CVE-2009-2698","Linux"], link:"https://github.com/abdelrahmanhossamshaat0001/Kioptrix2-Penetration-Testing-Report"},
+        {tag:"05",cat:"Security AI",name:"ProofGuard — Internal Security Auditor",status:"Frontier Engineering Challenge · Local-first",
+         desc:"A multi-agent, evidence-first security auditing system with human review. It validates claims against evidence, challenges weak conclusions, assigns defensible severity, redacts sensitive data, and produces auditable reports. Evaluation improved verdict accuracy from 33.3% to 100% across a frozen synthetic test set, with 8/8 tests passing.",
+         tags:["Multi-agent Systems","Evidence Grounding","Human Review","Security Reporting"]},
+        {tag:"06",cat:"Defensive Machine Learning",name:"Malware Behavior Detector",status:"Random Forest · Streamlit",
+         desc:"A behavior-based malware detector trained on CIC-MalMem-2022 memory features. The project includes cross-validation, feature analysis, manual top-feature input, and full CSV prediction for defensive malware analysis.",
+         tags:["Python","Random Forest","CIC-MalMem-2022","Streamlit"], link:"https://github.com/abdelrahmanhossamshaat0001/malware-behavior-detector-"}
       ]
     },
     certs:{eyebrow:"// CREDENTIALS", title:"Certifications", items:[
+      {name:"HCCDA — Tech Essentials", org:"Huawei ICT Academy", date:"Sep 2026", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"},
+      {name:"AWS Academy Graduate — Cloud Architecting", org:"Amazon Web Services · 60 hours", date:"Jul 2026", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"},
       {name:"AWS Academy Graduate — Cloud Foundations", org:"Amazon Web Services", date:"Apr 2026", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"},
       {name:"ISC2 CC Course Pre-assessment", org:"ISC2", date:"Feb 2026", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"},
       {name:"Leadership & Employability Skills", org:"Ministry of Electricity, Egypt", date:"Aug 2025", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"}
     ]},
     contact:{eyebrow:"// OPEN CHANNEL", title:"Get in Touch", desc:"Available for internships, collaborations, and cybersecurity opportunities.", emailLabel:"EMAIL", hfLabel:"HUGGING FACE", easterEgg:"thanks_for_scrolling"},
     footer:{text:"© 2026 ABDELRAHMAN HOSSAM SHAAT — STATUS: ACTIVE"},
-    stats:[{n:"25+",l:"GitHub Repos"},{n:"5",l:"Featured Projects"},{n:"3",l:"Certifications"},{n:"17",l:"Course Modules"}]
+    stats:[{n:"31",l:"Public Repositories"},{n:"6",l:"Featured Projects"},{n:"4",l:"Security Reports"},{n:"8/8",l:"ProofGuard Tests"}]
   },
   ar: {
     brandRest: ".شعت",
-    nav:{about:"نبذة",skills:"المهارات",projects:"المشاريع",certs:"الشهادات",contact:"تواصل"},
+    nav:{about:"نبذة",services:"الخدمات",skills:"المهارات",projects:"المشاريع",certs:"الشهادات",contact:"تواصل"},
     hero:{
       kicker:"حالة النظام: متصل",
       name_html:"عبدالرحمن <em>حسام شعت</em>",
-      role:"مسار الأمن السيبراني · هندسة الحاسبات والنظم · ANU",
-      desc:"طالب أمن سيبراني بيتعلم عن طريق البناء الفعلي — من اختبارات الاختراق لنماذج الذكاء الاصطناعي والعقود الذكية الآمنة.",
+      role:"أمن سيبراني واختبار اختراق — مستوى مبتدئ · طالب علوم حاسب",
+      desc:"بقيّم أمان تطبيقات الويب والشبكات داخل نطاق مصرح، وبوثّق الثغرات بأدلة واضحة وتقارير عملية تركز على المعالجة.",
       ctaProjects:"شوف المشاريع", ctaGithub:"صفحة GitHub",
       terminal:[
         {t:"prompt", text:"$ whoami"},
@@ -404,18 +421,27 @@ const content = {
       ]
     },
     about:{eyebrow:"// نبذة", title:"نبذة عني",
-      p1:"أنا طالب هندسة حاسبات ونظم، مسار الأمن السيبراني، في جامعة الإسكندرية الأهلية، وموعد التخرج المتوقع 2027. المواد اللي بدرسها بتغطي اختبار الاختراق، التشفير، تطوير البرمجيات الآمن، الحوسبة السحابية، والتعلم الآلي.",
-      p2:"بتعلم عن طريق البناء الفعلي — عندي أكتر من 25 مستودع عام على GitHub بيوثقوا شغلي العملي، من تقييمات الثغرات على تطبيقات ضعيفة بقصد للتدريب، لنماذج ML وعقود Solidity ذكية. كمان مهتم بريادة الأعمال، وحاليًا بطور Decko، مساعد أمن سيبراني لسطح المكتب.",
+      p1:"أنا طالب علوم حاسب في جامعة الإسكندرية الأهلية، متخصص في الأمن السيبراني واختبار الاختراق، وموعد التخرج المتوقع 2027.",
+      p2:"شغلي العملي يشمل اختبارات Black-box مصرح بها، واختبار تطبيقات الويب وفق OWASP، وتصعيد الصلاحيات في معامل Linux، وإعداد تقارير مبنية على الأدلة، بجانب أساسيات السحابة وتطبيقات تعلم الآلة في الأمن الدفاعي.",
       locLabel:"الموقع", instLabel:"الجامعة", degLabel:"الدرجة العلمية",
-      degValue:"بكالوريوس هندسة حاسبات ونظم — مسار الأمن السيبراني",
+      degValue:"بكالوريوس علوم الحاسب — مسار الأمن السيبراني",
       gradLabel:"موعد التخرج المتوقع", langLabel:"اللغات", langValue:"العربية (لغة أم)، الإنجليزية (احترافي)", locLabel2:"دمنهور، مصر"
     },
+    services:{eyebrow:"// خدمات العملاء",title:"الخدمات الأمنية",items:[
+      {name:"اختبار أمان تطبيقات الويب",desc:"اختبارات مصرح بها ومحددة النطاق لثغرات OWASP Top 10 مثل الحقن، ضعف التحكم في الوصول، المصادقة، وتسريب المعلومات."},
+      {name:"تقييم ثغرات الشبكات",desc:"حصر الخدمات، والتحقق من الثغرات، وترتيب المخاطر، وتقديم توصيات عملية لتقوية الأنظمة."},
+      {name:"إعداد تقارير اختبار الاختراق",desc:"تقارير تنفيذية وتقنية واضحة تشمل الأدلة، وسلسلة الهجوم، والخطورة، وخطوات إعادة الاختبار والمعالجة."},
+      {name:"مراجعة إعدادات الأمان",desc:"مراجعة المصادقة والصلاحيات والخدمات المكشوفة وترويسات الحماية وأخطاء إعداد Linux والسحابة الشائعة."},
+      {name:"تحليل سلوك البرمجيات الخبيثة",desc:"تحليل دفاعي يعتمد على مؤشرات السلوك وخصائص الذاكرة مع نماذج تعلم آلة موثقة التقييم."},
+      {name:"مراجعة الأدلة الأمنية",desc:"التحقق المنظم من الادعاءات والأدلة الأمنية مع مراجعة بشرية وتقييمات خطورة قابلة للدفاع عنها."}
+    ]},
     skills:{eyebrow:"// الأدوات", title:"المهارات", groups:[
       {name:"البرمجة", items:["Python","JavaScript","SQL","HTML5 / CSS3","Java","Dart & Flutter"]},
-      {name:"الأمن السيبراني", items:["OWASP Top 10","DVWA / Juice Shop","Burp Suite","Wireshark","Nmap"]},
-      {name:"السحابة والأنظمة", items:["AWS (IAM, EC2, S3, VPC, RDS)","Linux (أساسيات)"]},
+      {name:"الأمن السيبراني", items:["Black-box Testing","Web App Pentesting","OWASP Top 10 / WSTG","Linux Privilege Escalation","Vulnerability Assessment"]},
+      {name:"الأدوات الأمنية", items:["Burp Suite Professional","Nmap","Gobuster","Metasploit Framework","Wireshark","Netcat"]},
+      {name:"السحابة والأنظمة", items:["AWS (IAM, EC2, S3, VPC, RDS)","Huawei Cloud Fundamentals","Linux CLI","Bash","Computer Networking"]},
       {name:"البيانات والذكاء الاصطناعي", items:["Scikit-learn","Pandas","K-Means Clustering","خوارزمية Apriori"]},
-      {name:"الأدوات", items:["Git / GitHub","VS Code","Firebase","MS Teams"]}
+      {name:"أدوات التطوير", items:["Git / GitHub","Streamlit","Gradio","VS Code","VirtualBox"]}
     ]},
     course:{eyebrow:"// المواد الحالية", title:"المواد الدراسية", items:[
       "هياكل البيانات والخوارزميات","قواعد البيانات","سلامة البيانات والتوثيق","البلوك تشين و Solidity",
@@ -425,44 +451,38 @@ const content = {
       "الابتكار وريادة الأعمال"
     ]},
     proj:{eyebrow:"// أبرز الأعمال", title:"المشاريع",
-      moreText:"أكتر من 25 مستودع على GitHub — دي مجموعة مختارة منهم.",
+      moreText:"31 مستودع عام على GitHub — دي أقوى مجموعة مرتبطة بالأمن السيبراني.",
       items:[
-        {tag:"01",cat:"تشفير",name:"نظام كوكيز آمنة وتوقيع رقمي",status:"Python · مستودع GitHub",
-         desc:"مشروع أمني بثلاث أجزاء لمادة سلامة البيانات والتوثيق: مصادقة كوكيز بـ HMAC (تسجيل دخول وتوليد وتحقق من الـ tag)، وحدة توقيع رقمي بـ RSA لتوقيع الملفات والتحقق منها، ومعمل هجمات إضافي بيوضح هجومي Key Substitution وMessage Key Substitution على RSA التقليدي — مع شرح إزاي PSS padding وشهادات CA بتمنعهم.",
-         tags:["HMAC","توقيع رقمي","هجمات RSA"], link:"https://github.com/abdelrahmanhossamshaat0001/DATA-INEGRATY-project",
-         images:[
-           {src:"images/data-integrity-01-cookie-mac.png", cap:"تسجيل دخول والتحقق من كوكيز HMAC"},
-           {src:"images/data-integrity-02-digital-signature.png", cap:"توقيع رقمي RSA — توقيع ملف والتحقق منه"},
-           {src:"images/data-integrity-03-ksa-attack.png", cap:"عرض هجوم Key Substitution على RSA التقليدي"},
-           {src:"images/data-integrity-04-mksa-attack.png", cap:"هجوم Message Key Substitution + إزاي PSS/CA بيمنعوه"}
-         ]},
-        {tag:"02",cat:"تعلم آلة",name:"كاشف سلوك البرمجيات الخبيثة",status:"مشروع تخرج ML · شغال لايف",
-         desc:"تطبيق بيكتشف السلوك الخبيث من خصائص مستخرجة من memory dump، باستخدام نموذج Random Forest اتدرب على بيانات CIC-MalMem-2022. مبني على مبدأ دفاعي — اكتشاف السلوك الغير طبيعي (code injection، إخفاء العمليات، عدد handles/DLLs غير طبيعي) بدل محاولة الإخفاء. بيدعم إدخال يدوي لأهم 10 خصائص أو رفع ملف CSV كامل.",
-         tags:["Random Forest","Streamlit","تحليل برمجيات خبيثة"], link:"https://github.com/abdelrahmanhossamshaat0001/malware-behavior-detector-",
-         images:[
-           {src:"images/malware-01-manual-input.png", cap:"إدخال يدوي لأهم 10 خصائص"},
-           {src:"images/malware-02-csv-upload.png", cap:"خيار رفع ملف CSV كامل"},
-           {src:"images/malware-03-model-accuracy.png", cap:"تقييم النموذج — دقة ~99.9%"}
-         ]},
-        {tag:"03",cat:"تنقيب بيانات",name:"مجموعة مشاريع ML وتنقيب البيانات",status:"مستودع GitHub",
-         desc:"مجموعة مشاريع فيها نموذج توقع تسرب الطلاب (Hierarchical Clustering وClassification) وتحليل سلة السوق للتجزئة باستخدام خوارزمية Apriori.",
-         tags:["Clustering","Apriori","Classification"], link:"https://github.com/abdelrahmanhossamshaat0001/ML-Portfolio"},
-        {tag:"04",cat:"تحليل ثغرات ثابت",name:"تحليل أمني بـ Semgrep — Mutillidae II",status:"مستودع GitHub",
-         desc:"كتبت قواعد Semgrep مخصصة (SAST) لاكتشاف ثغرات SQL Injection وCommand Injection / RCE في تطبيق OWASP Mutillidae II.",
-         tags:["Semgrep","SAST","SQL Injection"], link:"https://github.com/abdelrahmanhossamshaat0001/Mutillidae-Semgrep-Analysis"},
-        {tag:"05",cat:"أمن التطبيقات",name:"نظام مصادقة آمن (RBAC & 2FA)",status:"Node.js · مستودع GitHub",
-         desc:"نظام مصادقة بـ Node.js فيه تشفير كلمات مرور بـ bcrypt، مصادقة ثنائية (Speakeasy/QR)، إدارة جلسات بـ JWT، وتحكم بالصلاحيات حسب الدور (Admin, Manager, User).",
-         tags:["JWT","2FA","RBAC","bcrypt"], link:"https://github.com/abdelrahmanhossamshaat0001/Secure-Auth-System"}
+        {tag:"01",cat:"أمن تطبيقات الويب",name:"تقرير اختبار اختراق OWASP Juice Shop",status:"مشروع NTI · تقرير 28 صفحة",
+         desc:"اختبار Black-box مصرح به يوثق 10 نتائج تشمل SQL Injection وأنواع XSS والتحكم المكسور في الوصول وتسريب المعلومات وضعف المصادقة وبيانات JWT الحساسة، مع الأدلة والتأثير والمعالجة.",
+         tags:["OWASP Top 10","Burp Suite","SQLi","XSS","IDOR"], link:"https://github.com/abdelrahmanhossamshaat0001/OWASP-Juice-Shop-Penetration-Testing-Report"},
+        {tag:"02",cat:"اختبار اختراق الشبكات",name:"تقرير اختبار اختراق Metasploitable 2",status:"معمل مصرح · تقرير 26 صفحة",
+         desc:"تقييم بنية تحتية كامل وثّق 8 ثغرات و5 مسارات مستقلة بدون مصادقة للوصول إلى تنفيذ أوامر بصلاحيات root عبر خدمات FTP وIRC وSMB وJava RMI وغيرها.",
+         tags:["Nmap","Metasploit","Network Security","Root Access"], link:"https://github.com/abdelrahmanhossamshaat0001/Metasploitable2-Penetration-Testing-Report"},
+        {tag:"03",cat:"سلسلة هجوم",name:"Kioptrix Level 3 — اختبار Black-box",status:"مشروع NTI النهائي · Root",
+         desc:"اختبار متكامل من الاستطلاع وتنفيذ الأوامر عبر LotusCMS إلى SQL Injection واستخراج بيانات الدخول والوصول عبر SSH وتصعيد صلاحيات Linux بسبب إعداد sudo خطير، مع تقرير وعرض تقديمي.",
+         tags:["Nmap","Gobuster","RCE","SQLi","Privilege Escalation"], link:"https://github.com/abdelrahmanhossamshaat0001/Kioptrix3-Penetration-Testing-Report"},
+        {tag:"04",cat:"سلسلة هجوم",name:"تقرير اختبار اختراق Kioptrix Level 2",status:"معمل مصرح · تقرير 21 صفحة",
+         desc:"سلسلة اختراق موثقة تبدأ بتجاوز المصادقة عبر SQL Injection ثم OS Command Injection والحصول على Bash كمستخدم apache وتصعيد الصلاحيات إلى root عبر CVE-2009-2698.",
+         tags:["SQL Injection","Command Injection","CVE-2009-2698","Linux"], link:"https://github.com/abdelrahmanhossamshaat0001/Kioptrix2-Penetration-Testing-Report"},
+        {tag:"05",cat:"الذكاء الاصطناعي الأمني",name:"ProofGuard — مدقق أمني داخلي",status:"Frontier Engineering Challenge · محلي",
+         desc:"نظام متعدد الوكلاء ومبني على الأدلة، يراجع الادعاءات الأمنية ويتحدى الاستنتاجات الضعيفة ويحدد خطورة قابلة للدفاع عنها مع مراجعة بشرية وحجب البيانات الحساسة. رفع دقة الأحكام من 33.3% إلى 100% على مجموعة اختبار اصطناعية ثابتة ونجح في 8/8 اختبارات.",
+         tags:["Multi-agent Systems","Evidence Grounding","Human Review","Security Reporting"]},
+        {tag:"06",cat:"تعلم آلة دفاعي",name:"كاشف سلوك البرمجيات الخبيثة",status:"Random Forest · Streamlit",
+         desc:"نظام يعتمد على سلوك الذاكرة للكشف عن البرمجيات الخبيثة، ومدرب على CIC-MalMem-2022، مع Cross-validation وتحليل الخصائص والإدخال اليدوي ورفع CSV للتنبؤ الدفاعي.",
+         tags:["Python","Random Forest","CIC-MalMem-2022","Streamlit"], link:"https://github.com/abdelrahmanhossamshaat0001/malware-behavior-detector-"}
       ]
     },
     certs:{eyebrow:"// الشهادات", title:"الشهادات", items:[
+      {name:"HCCDA — Tech Essentials", org:"Huawei ICT Academy", date:"سبتمبر 2026", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"},
+      {name:"AWS Academy Graduate — Cloud Architecting", org:"Amazon Web Services · 60 ساعة", date:"يوليو 2026", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"},
       {name:"AWS Academy Graduate — Cloud Foundations", org:"Amazon Web Services", date:"أبريل 2026", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"},
       {name:"ISC2 CC Course Pre-assessment", org:"ISC2", date:"فبراير 2026", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"},
       {name:"مهارات القيادة والتأهيل للتوظيف", org:"وزارة الكهرباء، مصر", date:"أغسطس 2025", link:"https://www.linkedin.com/in/abdelrahman-hossam-shaat/details/certifications/"}
     ]},
     contact:{eyebrow:"// تواصل", title:"تواصل معايا", desc:"متاح لفرص التدريب والتعاون في مجال الأمن السيبراني.", emailLabel:"الإيميل", hfLabel:"هجينج فيس", easterEgg:"شكرا_انك_وصلت_هنا"},
     footer:{text:"© 2026 عبدالرحمن حسام شعت — الحالة: نشط"},
-    stats:[{n:"+25",l:"مستودع GitHub"},{n:"5",l:"مشاريع مختارة"},{n:"3",l:"شهادات"},{n:"17",l:"مادة دراسية"}]
+    stats:[{n:"31",l:"مستودع عام"},{n:"6",l:"مشاريع مختارة"},{n:"4",l:"تقارير أمنية"},{n:"8/8",l:"اختبارات ProofGuard"}]
   }
 };
 
@@ -482,6 +502,16 @@ function renderSkills(lang){
   const c = content[lang];
   document.getElementById('skillGroups').innerHTML = c.skills.groups.map(g=>`
     <div class="skill-group"><h3>${g.name}</h3><ul>${g.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>
+  `).join('');
+}
+
+function renderServices(lang){
+  document.getElementById('serviceGrid').innerHTML = content[lang].services.items.map((s,i)=>`
+    <article class="service">
+      <span class="num">SERVICE ${String(i+1).padStart(2,'0')}</span>
+      <h3>${s.name}</h3>
+      <p>${s.desc}</p>
+    </article>
   `).join('');
 }
 
@@ -593,11 +623,11 @@ function renderAll(lang){
   document.getElementById('langToggle').textContent = lang === 'ar' ? 'EN' : 'AR';
   renderStatic(lang);
   renderStats(lang);
+  renderServices(lang);
   renderSkills(lang);
   renderCourses(lang);
   renderProjects(lang);
   renderCerts(lang);
-  renderTerminal(lang);
 }
 
 document.getElementById('langToggle').addEventListener('click', ()=>{
