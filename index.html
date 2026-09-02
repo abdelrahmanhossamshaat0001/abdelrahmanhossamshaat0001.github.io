@@ -240,18 +240,18 @@
 
   <div class="wrap"><div class="divider"></div></div>
 
-  <section id="services" class="wrap">
-    <div class="eyebrow" data-i18n="services.eyebrow">// CLIENT SERVICES</div>
-    <h2 data-i18n="services.title">Services</h2>
-    <div class="service-grid" id="serviceGrid"></div>
-  </section>
-
-  <div class="wrap"><div class="divider"></div></div>
-
   <section id="skills" class="wrap">
     <div class="eyebrow" data-i18n="skills.eyebrow">// TOOLKIT</div>
     <h2 data-i18n="skills.title">Skills</h2>
     <div class="skill-groups" id="skillGroups"></div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section id="services" class="wrap">
+    <div class="eyebrow" data-i18n="services.eyebrow">// HIRE ME FOR</div>
+    <h2 data-i18n="services.title">Services You Can Order</h2>
+    <div class="service-grid" id="serviceGrid"></div>
   </section>
 
   <div class="wrap"><div class="divider"></div></div>
@@ -346,13 +346,13 @@ const content = {
       degValue:"B.Sc. Computer Science — Cybersecurity Track",
       gradLabel:"EXPECTED GRADUATION", langLabel:"LANGUAGES", langValue:"Arabic (Native), English (Professional)", locLabel2:"Damanhour, Egypt"
     },
-    services:{eyebrow:"// CLIENT SERVICES",title:"Security Services",items:[
-      {name:"Web Application Penetration Testing",desc:"Authorized, scope-based testing for OWASP Top 10 weaknesses, including injection, broken access control, authentication, and information-disclosure issues."},
-      {name:"Network Vulnerability Assessment",desc:"Service enumeration, vulnerability validation, risk prioritization, and practical hardening recommendations for authorized lab or client environments."},
-      {name:"Professional Security Reports",desc:"Clear executive and technical reports with evidence, attack paths, severity ratings, reproducible findings, and remediation guidance."},
-      {name:"Security Configuration Review",desc:"Review of authentication, access control, exposed services, security headers, and common cloud or Linux configuration risks."},
-      {name:"Defensive Malware Analysis",desc:"Behavior-focused analysis and machine-learning-assisted detection using memory-derived indicators and documented model evaluation."},
-      {name:"Security Evidence Review",desc:"Structured validation of security claims and evidence, with human-review checkpoints and defensible severity decisions."}
+    services:{eyebrow:"// HIRE ME FOR",title:"Services You Can Order",items:[
+      {name:"Web Application Security Test",desc:"I test an authorized website or web app for OWASP Top 10 weaknesses and deliver documented findings with evidence, severity, impact, and fixes."},
+      {name:"Network Vulnerability Assessment",desc:"I scan and assess an authorized network or lab, identify exposed services and likely risks, then provide prioritized hardening recommendations."},
+      {name:"Penetration Testing Report",desc:"I turn your testing notes, screenshots, and evidence into a polished executive and technical report with attack chains and remediation guidance."},
+      {name:"Security Finding Validation",desc:"I manually review scanner findings or existing evidence to separate confirmed vulnerabilities from false positives and unsupported claims."},
+      {name:"Basic Linux & Cloud Security Review",desc:"I review common Linux, AWS, or Huawei Cloud configuration risks involving access, exposed services, permissions, and security controls."},
+      {name:"Defensive Security ML Prototype",desc:"I build a small Python and Streamlit prototype for behavior-based threat classification, data analysis, or security-focused machine learning."}
     ]},
     skills:{eyebrow:"// TOOLKIT", title:"Skills", groups:[
       {name:"Programming", items:["Python","JavaScript","SQL","HTML5 / CSS3","Java","Dart & Flutter"]},
@@ -440,13 +440,13 @@ const content = {
       degValue:"بكالوريوس علوم الحاسب — مسار الأمن السيبراني",
       gradLabel:"موعد التخرج المتوقع", langLabel:"اللغات", langValue:"العربية (لغة أم)، الإنجليزية (احترافي)", locLabel2:"دمنهور، مصر"
     },
-    services:{eyebrow:"// خدمات العملاء",title:"الخدمات الأمنية",items:[
-      {name:"اختبار أمان تطبيقات الويب",desc:"اختبارات مصرح بها ومحددة النطاق لثغرات OWASP Top 10 مثل الحقن، ضعف التحكم في الوصول، المصادقة، وتسريب المعلومات."},
-      {name:"تقييم ثغرات الشبكات",desc:"حصر الخدمات، والتحقق من الثغرات، وترتيب المخاطر، وتقديم توصيات عملية لتقوية الأنظمة."},
-      {name:"إعداد تقارير اختبار الاختراق",desc:"تقارير تنفيذية وتقنية واضحة تشمل الأدلة، وسلسلة الهجوم، والخطورة، وخطوات إعادة الاختبار والمعالجة."},
-      {name:"مراجعة إعدادات الأمان",desc:"مراجعة المصادقة والصلاحيات والخدمات المكشوفة وترويسات الحماية وأخطاء إعداد Linux والسحابة الشائعة."},
-      {name:"تحليل سلوك البرمجيات الخبيثة",desc:"تحليل دفاعي يعتمد على مؤشرات السلوك وخصائص الذاكرة مع نماذج تعلم آلة موثقة التقييم."},
-      {name:"مراجعة الأدلة الأمنية",desc:"التحقق المنظم من الادعاءات والأدلة الأمنية مع مراجعة بشرية وتقييمات خطورة قابلة للدفاع عنها."}
+    services:{eyebrow:"// خدمات تقدر تطلبها مني",title:"الخدمات التي أقدمها",items:[
+      {name:"اختبار أمان موقع أو تطبيق ويب",desc:"أختبر موقعًا أو تطبيقًا مصرحًا لك وفق OWASP Top 10، وأسلمك الثغرات بالأدلة والخطورة والتأثير وطريقة الإصلاح."},
+      {name:"تقييم ثغرات شبكة",desc:"أفحص شبكة أو معملًا مصرحًا، وأحدد الخدمات المكشوفة والمخاطر المحتملة، وأسلمك توصيات حماية مرتبة حسب الأولوية."},
+      {name:"كتابة تقرير اختبار اختراق",desc:"أحوّل ملاحظاتك وصورك وأدلتك إلى تقرير احترافي تنفيذي وتقني، يشمل سلسلة الهجوم والخطورة وخطوات المعالجة."},
+      {name:"مراجعة نتائج أدوات الفحص",desc:"أراجع نتائج الـScanner والأدلة يدويًا للتمييز بين الثغرة المؤكدة والـFalse Positive والادعاء الذي يحتاج أدلة إضافية."},
+      {name:"مراجعة أمان Linux والسحابة",desc:"أراجع أخطاء الإعداد الشائعة في Linux وAWS وHuawei Cloud المتعلقة بالصلاحيات والخدمات المكشوفة وضوابط الحماية."},
+      {name:"نموذج تعلم آلة للأمن الدفاعي",desc:"أبني نموذجًا أوليًا صغيرًا باستخدام Python وStreamlit لتحليل البيانات أو تصنيف التهديدات والسلوكيات المشبوهة."}
     ]},
     skills:{eyebrow:"// الأدوات", title:"المهارات", groups:[
       {name:"البرمجة", items:["Python","JavaScript","SQL","HTML5 / CSS3","Java","Dart & Flutter"]},
